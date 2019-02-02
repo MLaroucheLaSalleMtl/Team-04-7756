@@ -9,7 +9,8 @@ public class AttackControl : MonoBehaviour
     CapsuleCollider m_Capsule;
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
-
+    private bool isEnemy;
+    [SerializeField] AudioSource audioSwordAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class AttackControl : MonoBehaviour
         m_Capsule = GetComponent<CapsuleCollider>();
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
+        //isEnemy = false;
+        audioSwordAttack = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,10 +34,25 @@ public class AttackControl : MonoBehaviour
             m_Animator.SetTrigger("Attack");
             particle.enabled = true;
             particleTimer = 0.0f;
+            //SwordAttack();
         }
         if(particleTimer > 1.0f)
         {
             particle.enabled = false;
+        }
+    }
+
+    public void SwingSword()
+    {
+        isEnemy = true;
+    }
+
+    public void SwordAttack()
+    {
+        if(isEnemy == true)
+        {
+            Debug.Log("Sword Attack");
+            audioSwordAttack.Play();
         }
     }
 }

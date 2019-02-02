@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    private AttackControl attackControl;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        attackControl = GameObject.FindObjectOfType<AttackControl>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class Weapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("Sword Attack");
+            attackControl.SwingSword();
         }
     }
 
