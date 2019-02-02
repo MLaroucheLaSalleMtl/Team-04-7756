@@ -21,7 +21,7 @@ public class AttackControl : MonoBehaviour
         m_Capsule = GetComponent<CapsuleCollider>();
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
-        //isEnemy = false;
+        isEnemy = false;
         audioSwordAttack = GetComponent<AudioSource>();
     }
 
@@ -34,11 +34,11 @@ public class AttackControl : MonoBehaviour
             m_Animator.SetTrigger("Attack");
             particle.enabled = true;
             particleTimer = 0.0f;
-            //SwordAttack();
         }
         if(particleTimer > 1.0f)
         {
             particle.enabled = false;
+            isEnemy = false;
         }
     }
 
