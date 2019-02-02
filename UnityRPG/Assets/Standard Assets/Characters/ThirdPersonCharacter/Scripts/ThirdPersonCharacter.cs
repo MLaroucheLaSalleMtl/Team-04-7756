@@ -31,10 +31,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-
+        
 
 		void Start()
 		{
+           
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -50,7 +51,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                m_MoveSpeedMultiplier = 2.25f;
                 m_Animator.SetTrigger("Roll");
+                Invoke("RollReset", 0.7f);
+               
+                
             }
 
 			// convert the world relative moveInput vector into a local-relative
@@ -231,5 +236,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+
+        public void RollReset()
+        {
+            m_MoveSpeedMultiplier = 1.0f;
+        }
 	}
 }
