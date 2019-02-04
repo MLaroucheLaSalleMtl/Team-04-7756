@@ -10,7 +10,10 @@ public class AttackControl : MonoBehaviour
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
     private bool isEnemy;
-    [SerializeField] AudioSource audioSwordAttack;
+    [SerializeField] private AudioSource audioSwordAttack;
+    public AudioClip hitEnemy;
+    public AudioClip swingSword;
+    //[SerializeField] AudioSource audioSwingSword;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,11 @@ public class AttackControl : MonoBehaviour
     public void SwingSword()
     {
         isEnemy = true;
+    }
+    
+    public void SwordSound()
+    {
+        Debug.Log("Swing Sword");
     }
 
     public void SwordAttack()
