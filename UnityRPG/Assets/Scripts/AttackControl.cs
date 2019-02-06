@@ -11,8 +11,9 @@ public class AttackControl : MonoBehaviour
     private float particleTimer;
     private bool isEnemy;
     [SerializeField] private AudioSource audioSwordAttack;
-    public AudioClip hitEnemy;
-    public AudioClip swingSword;
+    [SerializeField] private GameObject projectile;
+    //public AudioClip hitEnemy;
+    //public AudioClip swingSword;
     //[SerializeField] AudioSource audioSwingSword;
 
     // Start is called before the first frame update
@@ -38,10 +39,29 @@ public class AttackControl : MonoBehaviour
             particle.enabled = true;
             particleTimer = 0.0f;
         }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            m_Animator.SetTrigger("SpellAttack");
+        }
+        //SpellAttack();
+
         if(particleTimer > 1.0f)
         {
             particle.enabled = false;
             isEnemy = false;
+        }
+    }
+
+    public void SpellAttack()
+    {
+        // projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+        {
+            projectile = Instantiate(projectile, transform.position, transform.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
         }
     }
 
