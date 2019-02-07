@@ -10,7 +10,11 @@ public class AttackControl : MonoBehaviour
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
     private bool isEnemy;
-    [SerializeField] AudioSource audioSwordAttack;
+    [SerializeField] private AudioSource audioSwordAttack;
+    [SerializeField] private GameObject projectile;
+    //public AudioClip hitEnemy;
+    //public AudioClip swingSword;
+    //[SerializeField] AudioSource audioSwingSword;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,10 @@ public class AttackControl : MonoBehaviour
             particle.enabled = true;
             particleTimer = 0.0f;
         }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            m_Animator.SetTrigger("SpellAttack");
+        }
         if(particleTimer > 1.0f)
         {
             particle.enabled = false;
@@ -42,9 +50,20 @@ public class AttackControl : MonoBehaviour
         }
     }
 
+    public void SpellAttack()
+    {
+        projectile = Instantiate(projectile, transform.position, transform.rotation);
+        projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 100, ForceMode.Acceleration);
+    }
+
     public void SwingSword()
     {
         isEnemy = true;
+    }
+    
+    public void SwordSound()
+    {
+        Debug.Log("Swing Sword");
     }
 
     public void SwordAttack()
