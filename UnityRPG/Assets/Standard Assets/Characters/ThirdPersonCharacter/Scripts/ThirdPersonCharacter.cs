@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -7,6 +8,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
+        [SerializeField] private float hp = 100f;
+        [SerializeField] private float stamina = 100f;
+
+        public Slider slider;
+
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
@@ -35,7 +41,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void Start()
 		{
-           
+            slider.value = 1.0f;
+
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -46,17 +53,28 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
+        void Update()
+        {
+            slider.value = (float)stamina / 100;
+            if(stamina < 100)
+            {
+                stamina = stamina + Time.deltaTime * 5;
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+            }
+        }
+
+
+        public void Move(Vector3 move, bool crouch, bool jump)
 		{
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 20)
             {
                 m_MoveSpeedMultiplier = 2.25f;
                 m_Animator.SetTrigger("Roll");
                 Invoke("RollReset", 0.7f);
-               
-                
+
+                stamina = stamina - 20f;
             }
+
 
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
