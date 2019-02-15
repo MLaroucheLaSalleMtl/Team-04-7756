@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class AttackControl : MonoBehaviour
 {
+    [SerializeField] private float mana = 100f;
+    public Slider manaBar;
+
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     CapsuleCollider m_Capsule;
@@ -40,11 +43,20 @@ public class AttackControl : MonoBehaviour
             particle.enabled = true;
             particleTimer = 0.0f;
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && mana > 30f)
         {
             m_Animator.SetTrigger("SpellAttack");
+            mana = mana - 30f;
         }
-        if(particleTimer > 1.0f)
+
+        manaBar.value = (float)mana / 100;
+        if (mana < 100)
+        {
+            mana = mana + Time.deltaTime * 5;
+
+        }
+
+        if (particleTimer > 1.0f)
         {
             particle.enabled = false;
             isEnemy = false;
@@ -64,7 +76,7 @@ public class AttackControl : MonoBehaviour
     
     public void SwordSound()
     {
-        Debug.Log("Swing Sword");
+        //Debug.Log("Swing Sword");
     }
 
     public void SwordAttack()

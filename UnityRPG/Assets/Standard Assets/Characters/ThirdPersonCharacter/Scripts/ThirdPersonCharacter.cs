@@ -8,19 +8,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
-        [SerializeField] private float hp = 100f;
+        //[SerializeField] public float hp = 100f;
         [SerializeField] private float stamina = 100f;
+        //[SerializeField] private float mana = 100f;
 
-        public Slider slider;
+        //public Slider hpBar;
+        public Slider staminaBar;
+        //public Slider manaBar;
 
-		[SerializeField] float m_MovingTurnSpeed = 360;
+
+        [SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+
+        [Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -41,7 +46,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void Start()
 		{
-            slider.value = 1.0f;
+            staminaBar.value = 1.0f;
 
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
@@ -55,7 +60,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void Update()
         {
-            slider.value = (float)stamina / 100;
+            staminaBar.value = (float)stamina / 100;
             if(stamina < 100)
             {
                 stamina = stamina + Time.deltaTime * 5;
@@ -66,7 +71,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void Move(Vector3 move, bool crouch, bool jump)
 		{
-            if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 20)
+            if (Input.GetButtonDown("Roll") && stamina > 20)
             {
                 m_MoveSpeedMultiplier = 2.25f;
                 m_Animator.SetTrigger("Roll");
@@ -89,14 +94,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			ApplyExtraTurnRotation();
 
 			// control and velocity handling is different when grounded and airborne:
-			if (m_IsGrounded)
-			{
-				HandleGroundedMovement(crouch, jump);
-			}
-			else
-			{
-				HandleAirborneMovement();
-			}
+			//if (m_IsGrounded)
+			//{
+			//	HandleGroundedMovement(crouch, jump);
+			//}
+			//else
+			//{
+			//	HandleAirborneMovement();
+			//}
 
             ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
@@ -196,18 +201,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		void HandleGroundedMovement(bool crouch, bool jump)
-		{
-			// check whether conditions are right to allow a jump:
-			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
-			{
-				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
-				m_IsGrounded = false;
-				m_Animator.applyRootMotion = false;
-				m_GroundCheckDistance = 0.1f;
-			}
-		}
+		//void HandleGroundedMovement(bool crouch, bool jump)
+		//{
+		//	// check whether conditions are right to allow a jump:
+		//	if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+		//	{
+		//		// jump!
+		//		m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+		//		m_IsGrounded = false;
+		//		m_Animator.applyRootMotion = false;
+		//		m_GroundCheckDistance = 0.1f;
+		//	}
+		//}
 
 		void ApplyExtraTurnRotation()
 		{
