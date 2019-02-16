@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class AttackControl : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class AttackControl : MonoBehaviour
     //public AudioClip hitEnemy;
     //public AudioClip swingSword;
     //[SerializeField] AudioSource audioSwingSword;
+    private ThirdPersonCharacter Maria;
+    private bool canAttack = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        Maria = GetComponent<ThirdPersonCharacter>();
         particleTimer = Time.deltaTime;
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -34,11 +38,16 @@ public class AttackControl : MonoBehaviour
     void Update()
     {
         particleTimer += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
         {
+          
             m_Animator.SetTrigger("Attack");
             particle.enabled = true;
-            particleTimer = 0.0f;
+            particleTimer = 0.0f;            
+            Maria.Stamina -= 15;
+            canAttack = false;
+            Invoke("ResetAttack", 1.0f);
+            
         }
         if (Input.GetButtonDown("Fire2"))
         {
@@ -74,5 +83,10 @@ public class AttackControl : MonoBehaviour
             Debug.Log("Sword Attack");
             audioSwordAttack.Play();
         }
+    }
+
+    public void ResetAttack()
+    {
+        canAttack = true;
     }
 }
