@@ -17,8 +17,8 @@ public class MutantControl : MonoBehaviour
     {
         m_Animator = GetComponent<Animator>();
         interval = Time.deltaTime;
-        agent = GetComponent<NavMeshAgent>();
-        destination = agent.destination;
+        //agent = GetComponent<NavMeshAgent>();
+        //destination = agent.destination;
         //target = GameObject.FindGameObjectWithTag("player");
     }
 
@@ -38,6 +38,6 @@ public class MutantControl : MonoBehaviour
         }
         //m_Animator.SetFloat("Distance", Vector3.Distance(target.position, this.transform.position));
 
-        Debug.Log(Vector3.Distance(target.position, this.transform.position));
+        //Debug.Log(Vector3.Distance(target.position, this.transform.position));
     }
 }
