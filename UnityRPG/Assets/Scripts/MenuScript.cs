@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     private AsyncOperation async;
+    [SerializeField] GameObject SettingPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
@@ -33,6 +35,8 @@ public class MenuScript : MonoBehaviour
     public void StartGame()
     {
         async.allowSceneActivation = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void Exit()
