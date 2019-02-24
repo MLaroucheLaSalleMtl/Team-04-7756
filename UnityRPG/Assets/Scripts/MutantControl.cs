@@ -31,11 +31,11 @@ public class MutantControl : MonoBehaviour
             m_Animator.SetTrigger("Swiping");
             interval = 0f;
         }
-        if (Vector3.Distance(target.position, this.transform.position) > 10)
-        {
-            m_Animator.SetTrigger("Swiping");
-            this.transform.position = target.position;
-        }
+        //if (Vector3.Distance(target.position, this.transform.position) > 10)
+        //{
+        //    m_Animator.SetTrigger("Swiping");
+        //    this.transform.position = target.position;
+        //}
         //m_Animator.SetFloat("Distance", Vector3.Distance(target.position, this.transform.position));
 
         //Debug.Log(Vector3.Distance(target.position, this.transform.position));

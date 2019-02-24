@@ -23,15 +23,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 
-        private void Update()
+        private void LateUpdate()
         {
             if (target != null)
-                agent.SetDestination(target.position);
-
+            {
+                if (Vector3.Distance(target.position, this.transform.position) > 5)
+                {
+                    agent.SetDestination(target.position);
+                }
+                else
+                {
+                    agent.SetDestination(Vector3.zero);
+                }
+            }
             if (agent.remainingDistance > agent.stoppingDistance)
+            {
                 character.Move(agent.desiredVelocity, false, false);
+            }
             else
+            {
                 character.Move(Vector3.zero, false, false);
+            }
         }
 
 
