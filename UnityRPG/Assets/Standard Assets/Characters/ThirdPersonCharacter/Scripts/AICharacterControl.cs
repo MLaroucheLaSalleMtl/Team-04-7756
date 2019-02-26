@@ -27,9 +27,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (target != null)
             {
-                if (Vector3.Distance(target.position, this.transform.position) > 5)
+                if (Vector3.Distance(target.position, this.transform.position) > 6)
                 {
-                    agent.SetDestination(target.position);
+                    agent.SetDestination(transform.position - target.position);
                 }
                 else
                 {
