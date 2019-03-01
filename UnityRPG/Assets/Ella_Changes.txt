@@ -1,0 +1,10 @@
+public 20190226(){
+	* Change forder name "Model" => "Characters"
+	+ Adding an archer character "erika_archer_bow_arrow"
+		+ Model of "erika_archer_bow_arrow"
+		+ Character Animator Controller
+		+ Idle animation
+		+ Shot animation
+	
+	+ Added interface "IDamageable" to check if gameobject could take damage
+}
