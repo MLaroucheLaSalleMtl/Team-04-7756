@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float damageCaused;
+    public float projectileSpeed;
+
+    public void SetDamage(float damage)
     {
-        
+        damageCaused = damage;
     }
 
-    // Update is called once per frame
-    void Update()
+    //[SerializeField] float projectileSpeed;
+    //float damageCaused = 10f;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Component damagableComponent = other.gameObject.GetComponent(typeof(IDamageable));
+        if (damagableComponent)
+        {
+            (damagableComponent as IDamageable).TakeDamage(damageCaused);
+        }
     }
 }
