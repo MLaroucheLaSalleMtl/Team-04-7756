@@ -387,7 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a033e04d85000c40b785e029bd37a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCaused: 10
   projectileSpeed: 50
 --- !u!1 &1161025581
 GameObject:
@@ -1179,6 +1178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754737400299278858, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}

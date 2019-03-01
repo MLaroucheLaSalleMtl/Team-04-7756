@@ -114,6 +114,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         Health = Mathf.Clamp(Health - damage, 0f, Health);
+        //TODO if Health => Game Over
     }
 
     //private void OnTriggerEnter(Collider other)

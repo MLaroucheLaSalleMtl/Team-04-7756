@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damageCaused;
+    private float damageCaused;
     public float projectileSpeed;
+
+    public void SetDamage(float damage)
+    {
+        damageCaused = damage;
+    }
 
     //[SerializeField] float projectileSpeed;
     //float damageCaused = 10f;
