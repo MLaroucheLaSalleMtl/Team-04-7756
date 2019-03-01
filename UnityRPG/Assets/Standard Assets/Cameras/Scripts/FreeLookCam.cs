@@ -68,7 +68,17 @@ namespace UnityStandardAssets.Cameras
         {
             if (m_Target == null) return;
             // Move the rig towards target position.
-            transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
+
+            if (m_Target.tag != "MagicOrb")
+            {
+                transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime * m_MoveSpeed);
+            }
+            else
+            {
+                transform.position = new Vector3(m_Target.position.x, m_Target.position.y - 2, m_Target.position.z);//Follow the magic orb!Might make more depenging on work.
+            }
+
+
         }
 
 
