@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MutantControl : MonoBehaviour
+public class MutantControl : MonoBehaviour, IDamageable
 {
     [SerializeField] private Transform target;
+    [SerializeField] private float walkMoveStopRadius = 3f;
 
     Animator m_Animator;
     private float interval;
@@ -31,13 +32,25 @@ public class MutantControl : MonoBehaviour
             m_Animator.SetTrigger("Swiping");
             interval = 0f;
         }
-        if (Vector3.Distance(target.position, this.transform.position) > 10)
-        {
-            m_Animator.SetTrigger("Swiping");
-            this.transform.position = target.position;
-        }
+        //if (Vector3.Distance(target.position, this.transform.position) > 10)
+        //{
+        //    m_Animator.SetTrigger("Swiping");
+        //    this.transform.position = target.position;
+        //}
         //m_Animator.SetFloat("Distance", Vector3.Distance(target.position, this.transform.position));
 
         //Debug.Log(Vector3.Distance(target.position, this.transform.position));
+
+
+        //var targetPosition = transform.position - destination;
+        //if(targetPosition.magnitude >= walkMoveStopRadius)
+        //{
+        //    this.transform.position = target.position;
+        //}
+        
+    }
+    public void TakeDamage(float damage)
+    {
+
     }
 }
