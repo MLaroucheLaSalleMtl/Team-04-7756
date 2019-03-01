@@ -1089,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &474990896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &480720742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2064,12 +2064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3818c7916c0f6e4f9f37cb94920a6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulties: 
   audioM: {fileID: 24100000, guid: 0383a28bc593f504084e411cc039d6ef, type: 2}
   audioS: {fileID: 24100000, guid: f7f805ff2e59a574cb76ea4b9095c32f, type: 2}
   audioslider: {fileID: 636335945}
   sfxslider: {fileID: 690529627}
-  diffDropdown: {fileID: 0}
 --- !u!1 &909121637
 GameObject:
   m_ObjectHideFlags: 0

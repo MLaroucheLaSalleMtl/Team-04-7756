@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    public string difficulties/* = "Easy"*/;
+    private string difficulties;
     private AsyncOperation async;
     [SerializeField] GameObject SettingPanel;
     [SerializeField] private Dropdown diffDropdown;
@@ -45,7 +45,6 @@ public class MenuScript : MonoBehaviour
                 async = SceneManager.LoadSceneAsync("Hard");
                 async.allowSceneActivation = false;
             }
-
         }
     }
 
