@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
     GameObject player = null;
 
     Animator m_Animator;    //should be in the ThirdPersonEney.cs
+    float rotateSpeed = 3f;
+
 
     public float healthAsPercentage
     {
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), rotateSpeed * Time.deltaTime);
 
         if (distanceToPlayer <= attackRadius && !isAttacking)
         {
