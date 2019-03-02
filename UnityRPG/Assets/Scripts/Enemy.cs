@@ -79,9 +79,11 @@ public class Enemy : MonoBehaviour
 
     void SpawnProjectile()
     {
-        GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.LookRotation(player.transform.position - transform.position));
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
         projectileComponent.SetDamage(damagePerShot);
+
+        //transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
 
         Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
