@@ -1,4 +1,3 @@
-
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,4 +20,3 @@ public class Player : MonoBehaviour, IDamageable
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
     }
 }
-

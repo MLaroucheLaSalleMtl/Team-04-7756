@@ -1,4 +1,3 @@
-
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,4 +21,3 @@ public class EnemyUI : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
     }
 }
-

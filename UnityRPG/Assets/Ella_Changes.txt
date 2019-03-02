@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 public 20190226(){
 	* Change forder name "Model" => "Characters"
 	+ Adding an archer character "erika_archer_bow_arrow"
@@ -8,15 +7,4 @@ public 20190226(){
 		+ Shot animation
 	
 	+ Added interface "IDamageable" to check if gameobject could take damage
-=======
-public 20190226(){
-	* Change forder name "Model" => "Characters"
-	+ Adding an archer character "erika_archer_bow_arrow"
-		+ Model of "erika_archer_bow_arrow"
-		+ Character Animator Controller
-		+ Idle animation
-		+ Shot animation
-	
-	+ Added interface "IDamageable" to check if gameobject could take damage
->>>>>>> 8cd63aa25f22e29f443f9c32ee32db40180abe44
 }

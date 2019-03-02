@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
@@ -458,3 +457,4 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
         m_MoveSpeedMultiplier = 1.0f;
     }
 }
+
