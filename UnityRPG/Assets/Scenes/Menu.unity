@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -29, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: -3, y: 7}
 --- !u!114 &199949687
@@ -1719,9 +1719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0ee70d6d80f6040bd16da814cf1962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulties: 
-  SettingPanel: {fileID: 959180211}
-  diffDropdown: {fileID: 2124555145}
+  SettingPanel: {fileID: 0}
 --- !u!114 &680119449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1734,12 +1732,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3818c7916c0f6e4f9f37cb94920a6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulties: Easy
   audioM: {fileID: 24100000, guid: 0383a28bc593f504084e411cc039d6ef, type: 2}
   audioS: {fileID: 24100000, guid: f7f805ff2e59a574cb76ea4b9095c32f, type: 2}
   audioslider: {fileID: 410056901}
   sfxslider: {fileID: 1062438754}
-  diffDropdown: {fileID: 2031991734}
 --- !u!1 &731098933
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,18 +4556,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 680119448}
-        m_MethodName: SetDifficulties
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2124555146
@@ -4769,7 +4754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -29, y: -100}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: -3, y: 7}
 --- !u!114 &2139086862
