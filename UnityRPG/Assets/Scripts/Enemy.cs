@@ -10,16 +10,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRadius = 2f;
     [SerializeField] GameObject projectileToUse;
     [SerializeField] GameObject projectileSocket;
+    [SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
 
 
-    bool isAttacking = false;
+    private bool isAttacking = false;
     [SerializeField] float damagePerShot = 9f;
+    [SerializeField] float intervalBetweenShots = 0.5f;
 
 
     float currentHealthPoints = 100f;
     AIEnemyControl aIEnemyControl = null;
+    ThirdPersonEnemy thirdPersonEnemy = null;
     //ThirdPersonEnemy thirdPersonEnemy = null;
     GameObject player = null;
+
+    Animator m_Animator;    //should be in the ThirdPersonEney.cs
+    float rotateSpeed = 3f;
+
 
     public float healthAsPercentage
     {
@@ -34,7 +41,8 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         aIEnemyControl = GetComponent<AIEnemyControl>();
-
+        thirdPersonEnemy = GetComponent<ThirdPersonEnemy>();
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,13 +50,24 @@ public class Enemy : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), rotateSpeed * Time.deltaTime);
+
         if (distanceToPlayer <= attackRadius && !isAttacking)
         {
+            m_Animator.SetBool("IsAttacking", true);
             isAttacking = true;
-            SpawnProjectile();
+            InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
+            //SpawnProjectile();
         }
 
-        if (distanceToPlayer <= chaseRadius)
+        if(distanceToPlayer > attackRadius)
+        {
+            m_Animator.SetBool("IsAttacking", false);
+            isAttacking = false;
+            CancelInvoke();
+        }
+
+        if (distanceToPlayer <= chaseRadius && distanceToPlayer > attackRadius)
         {
             aIEnemyControl.SetTarget(player.transform);
         }
@@ -60,10 +79,13 @@ public class Enemy : MonoBehaviour
 
     void SpawnProjectile()
     {
-        GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.LookRotation(player.transform.position - transform.position));
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
-        projectileComponent.damageCaused = damagePerShot;
-        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
+        projectileComponent.SetDamage(damagePerShot);
+
+        //transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+
+        Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }

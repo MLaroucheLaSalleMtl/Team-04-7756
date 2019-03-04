@@ -2628,8 +2628,7 @@ MonoBehaviour:
   maxHealthPoints: 100
   chaseRadius: 10
   attackRadius: 8
-  projectileToUse: {fileID: 2435427380998640600, guid: d8ba95275d85754458b3aff4c052ef57,
-    type: 3}
+  projectileToUse: {fileID: 0}
   projectileSocket: {fileID: 1842110131}
   aimOffset: {x: 0, y: 1, z: 0}
   damagePerShot: 10
