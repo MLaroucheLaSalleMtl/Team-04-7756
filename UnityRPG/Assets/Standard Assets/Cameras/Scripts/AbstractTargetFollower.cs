@@ -13,8 +13,6 @@ namespace UnityStandardAssets.Cameras
         }
 
         [SerializeField] protected Transform m_Target;            // The target object to follow
-        [SerializeField] protected Transform SecondTarget;
-        //[SerializeField] protected Transform originTarget;
         [SerializeField] private bool m_AutoTargetPlayer = true;  // Whether the rig should automatically target the player.
         [SerializeField] private UpdateType m_UpdateType;         // stores the selected update type
 
@@ -23,7 +21,6 @@ namespace UnityStandardAssets.Cameras
 
         protected virtual void Start()
         {
-           
             // if auto targeting is used, find the object tagged "Player"
             // any class inheriting from this should call base.Start() to perform this action!
             if (m_AutoTargetPlayer)
@@ -32,7 +29,6 @@ namespace UnityStandardAssets.Cameras
             }
             if (m_Target == null) return;
             targetRigidbody = m_Target.GetComponent<Rigidbody>();
-            //originTarget = m_Target;
         }
 
 
@@ -48,15 +44,6 @@ namespace UnityStandardAssets.Cameras
             {
                 FollowTarget(Time.deltaTime);
             }
-            if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
-            {
-                FindAndTargetOrb();
-            }
-            else//Back to player when released
-            {
-                FindAndTargetPlayer();
-            }
-            
         }
 
 
@@ -112,15 +99,6 @@ namespace UnityStandardAssets.Cameras
         public Transform Target
         {
             get { return m_Target; }
-        }
-
-        public void FindAndTargetOrb()
-        {
-            var targetOrb = GameObject.FindGameObjectWithTag("MagicOrb");
-            if (targetOrb)
-            {
-                SetTarget(targetOrb.transform);
-            }
         }
     }
 }

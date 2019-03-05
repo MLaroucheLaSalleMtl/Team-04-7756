@@ -37,29 +37,26 @@ public class AttackControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Input.GetButton("Fire2"))
+        particleTimer += Time.deltaTime;
+        if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
         {
-            particleTimer += Time.deltaTime;
-            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
-            {
-
-                m_Animator.SetTrigger("Attack");
-                particle.enabled = true;
-                particleTimer = 0.0f;
-                Maria.Stamina -= 15;
-                canAttack = false;
-                Invoke("ResetAttack", 1.0f);
-
-            }
-            if (Input.GetButtonDown("Fire2"))
-            {
-                m_Animator.SetTrigger("SpellAttack");
-            }
-            if (particleTimer > 1.0f)
-            {
-                particle.enabled = false;
-                isEnemy = false;
-            }
+          
+            m_Animator.SetTrigger("Attack");
+            particle.enabled = true;
+            particleTimer = 0.0f;            
+            Maria.Stamina -= 15;
+            canAttack = false;
+            Invoke("ResetAttack", 1.0f);
+            
+        }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            m_Animator.SetTrigger("SpellAttack");
+        }
+        if(particleTimer > 1.0f)
+        {
+            particle.enabled = false;
+            isEnemy = false;
         }
     }
 
