@@ -12,7 +12,7 @@ public class AttackControl : MonoBehaviour
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
     private bool isEnemy;
-    [SerializeField] private AudioSource audioSwordAttack;
+    //private AudioSource audioSwordAttack;
     [SerializeField] private GameObject projectile;
     //public AudioClip hitEnemy;
     //public AudioClip swingSword;
@@ -31,7 +31,7 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
-        audioSwordAttack = GetComponent<AudioSource>();
+        //audioSwordAttack = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -81,7 +81,6 @@ public class AttackControl : MonoBehaviour
         if(isEnemy == true)
         {
             Debug.Log("Sword Attack");
-            audioSwordAttack.Play();
         }
     }
 
