@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Cameras
         public float returnTime = 0.4f;                 // time taken to move back towards desired position, when not clipping (typically should be a higher value than clipMoveTime)
         public float sphereCastRadius = 0.1f;           // the radius of the sphere used to test for object between camera and target
         public bool visualiseInEditor;                  // toggle for visualising the algorithm through lines for the raycast in the editor
-        public float closestDistance = 0.5f;            // the closest distance the camera can be from the target
+        public float closestDistance = 2.1f;            // the closest distance the camera can be from the target
         public bool protecting { get; private set; }    // used for determining if there is an object between the target and the camera
         public string dontClipTag = "Player";           // don't clip against objects with this tag (useful for not clipping against the targeted object)
 
@@ -23,7 +23,7 @@ namespace UnityStandardAssets.Cameras
         private RaycastHit[] m_Hits;              // the hits between the camera and the target
         private RayHitComparer m_RayHitComparer;  // variable to compare raycast hit distances
 
-
+        private float camera_Y;
         private void Start()
         {
             // find the camera in the object hierarchy
@@ -31,6 +31,7 @@ namespace UnityStandardAssets.Cameras
             m_Pivot = m_Cam.parent;
             m_OriginalDist = m_Cam.localPosition.magnitude;
             m_CurrentDist = m_OriginalDist;
+            camera_Y = m_Cam.transform.position.y;
 
             // create a new RayHitComparer
             m_RayHitComparer = new RayHitComparer();
@@ -39,6 +40,16 @@ namespace UnityStandardAssets.Cameras
 
         private void LateUpdate()
         {
+            if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
+            {
+                m_CurrentDist = (m_OriginalDist / 4);
+                m_Cam.transform.position = new Vector3(m_Cam.transform.position.x, camera_Y * 6, m_Cam.transform.position.z);
+                //m_Cam.transform.position.y = m_Cam.transform.position.y - 5;
+            }
+            else
+            {
+                m_CurrentDist = m_OriginalDist;
+            }
             // initially set the target distance
             float targetDist = m_OriginalDist;
 
