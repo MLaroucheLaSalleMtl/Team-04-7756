@@ -90,6 +90,14 @@ public class Enemy : MonoBehaviour
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Weapon")
+        {
+            currentHealthPoints -= 20f;
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(255f, 0f, 0f, 0.5f);
