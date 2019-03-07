@@ -11,9 +11,11 @@ public class AttackControl : MonoBehaviour
     CapsuleCollider m_Capsule;
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
+    public bool hasSword;
     private bool isEnemy;
     //private AudioSource audioSwordAttack;
     [SerializeField] private GameObject projectile;
+    //[SerializeField] private GameObject playerWithSword;
     //public AudioClip hitEnemy;
     //public AudioClip swingSword;
     //[SerializeField] AudioSource audioSwingSword;
@@ -34,16 +36,24 @@ public class AttackControl : MonoBehaviour
         particle.enabled = false;
         isEnemy = false;
         swordCol.SetActive(false);
+        hasSword = false;
+        //playerWithSword.SetActive(false);
         //audioSwordAttack = this.GetComponent<AudioSource>();
     }
-
+    public void GetSword()
+    {
+        hasSword = true;
+        //playerWithSword.SetActive(true);
+        //Destroy(gameObject);
+        //playerWithSword.transform.position = transform.position;
+    }
     // Update is called once per frame
     void Update()
     {
         if (!Input.GetButton("Fire2"))
         {
             particleTimer += Time.deltaTime;
-            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
+            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)// && hasSword == true)
             {
 
                 m_Animator.SetTrigger("Attack");
