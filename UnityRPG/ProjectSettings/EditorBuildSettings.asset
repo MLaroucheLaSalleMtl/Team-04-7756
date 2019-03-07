@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terrain.unity
     guid: ad199093285491746ab22c0bbc459750
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Enemy.unity
     guid: 664b3d5e8069dfe4eb03826063ca49d6
+  - enabled: 1
+    path: Assets/Scenes/SampleTerrain.unity
+    guid: 78be6f6e2f774b14283cacfd71faa75f
   m_configObjects: {}

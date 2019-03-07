@@ -30,21 +30,23 @@ public class MenuScript : MonoBehaviour
         if (async == null)
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            if (difficulties == "Easy")
-            {                
-                async = SceneManager.LoadSceneAsync("Easy");
-                async.allowSceneActivation = false;
-            }
-            if (difficulties == "Medium")
-            {                
-                async = SceneManager.LoadSceneAsync("Medium");
-                async.allowSceneActivation = false;
-            }
-            if (difficulties == "Hard")
-            {                
-                async = SceneManager.LoadSceneAsync("Hard");
-                async.allowSceneActivation = false;
-            }
+            async = SceneManager.LoadSceneAsync("SampleTerrain");
+            async.allowSceneActivation = false;
+            //if (difficulties == "Easy")
+            //{                
+            //    async = SceneManager.LoadSceneAsync("Easy");
+            //    async.allowSceneActivation = false;
+            //}
+            //if (difficulties == "Medium")
+            //{                
+            //    async = SceneManager.LoadSceneAsync("Medium");
+            //    async.allowSceneActivation = false;
+            //}
+            //if (difficulties == "Hard")
+            //{                
+            //    async = SceneManager.LoadSceneAsync("Hard");
+            //    async.allowSceneActivation = false;
+            //}
         }
     }
 

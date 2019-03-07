@@ -259,7 +259,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
 
     public void Move(Vector3 move, bool crouch, bool jump)
 	{
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Stamina > 15 && canRoll)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Stamina >= 25 && canRoll)
         {
             canRoll = false;
             m_MoveSpeedMultiplier = 2.25f;
