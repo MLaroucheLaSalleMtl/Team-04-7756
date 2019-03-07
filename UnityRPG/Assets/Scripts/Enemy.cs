@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float intervalBetweenShots = 0.5f;
 
 
-    float currentHealthPoints = 100f;
+    public float currentHealthPoints = 100f;
     AIEnemyControl aIEnemyControl = null;
     ThirdPersonEnemy thirdPersonEnemy = null;
     //ThirdPersonEnemy thirdPersonEnemy = null;

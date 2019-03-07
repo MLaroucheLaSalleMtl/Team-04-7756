@@ -30,9 +30,9 @@ public class ProjectileShoot : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (Maria.Mana >= 15)
+                if (Maria.Mana >= 35)
                 {
-                    Maria.Mana -= 15;
+                    Maria.Mana -= 35;
                     Fire();
                 }
             }
