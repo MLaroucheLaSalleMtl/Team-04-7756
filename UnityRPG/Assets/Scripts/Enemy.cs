@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
 
     private bool isAttacking = false;
+    private bool isDoingAttack = false;
     [SerializeField] float damagePerShot = 9f;
     [SerializeField] float intervalBetweenShots = 0.5f;
 
@@ -27,8 +28,9 @@ public class Enemy : MonoBehaviour
     Animator m_Animator;    //should be in the ThirdPersonEney.cs
     float rotateSpeed = 3f;
 
-    [SerializeField] private AudioSource attackSFX;
-    //AudioClip attackSFX;
+    private AudioSource attackSFX;
+
+    //private GameObject enemyCol;
 
 
     public float healthAsPercentage
@@ -46,7 +48,8 @@ public class Enemy : MonoBehaviour
         aIEnemyControl = GetComponent<AIEnemyControl>();
         thirdPersonEnemy = GetComponent<ThirdPersonEnemy>();
         m_Animator = GetComponent<Animator>();
-        attackSFX = GetComponent<AudioSource>();
+        attackSFX = this.GetComponent<AudioSource>();
+        projectileToUse.SetActive(true);
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class Enemy : MonoBehaviour
             m_Animator.SetBool("IsAttacking", true);
             isAttacking = true;
             InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
-            //SpawnProjectile();
+            SpawnProjectile();
         }
 
         if(distanceToPlayer > attackRadius)
@@ -71,7 +74,7 @@ public class Enemy : MonoBehaviour
             CancelInvoke();
         }
 
-        if (distanceToPlayer <= chaseRadius && distanceToPlayer > attackRadius)
+        if (distanceToPlayer <= chaseRadius && distanceToPlayer > attackRadius && isDoingAttack == false)
         {
             aIEnemyControl.SetTarget(player.transform);
         }
@@ -85,6 +88,7 @@ public class Enemy : MonoBehaviour
         {
             m_Animator.SetTrigger("Die");
             aIEnemyControl.SetTarget(transform);
+            projectileToUse.SetActive(false);
             Destroy(gameObject, 3f);
         }
     }
@@ -110,6 +114,15 @@ public class Enemy : MonoBehaviour
             currentHealthPoints -= 20f;
             
         }
+    }
+
+    private void CannotMove()
+    {
+        isDoingAttack = true;
+    }
+    private void CanMove()
+    {
+        isDoingAttack = false;
     }
 
     void OnDrawGizmos()

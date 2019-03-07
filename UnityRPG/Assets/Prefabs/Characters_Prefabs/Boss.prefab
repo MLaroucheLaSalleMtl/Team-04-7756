@@ -2143,9 +2143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1000
-  chaseRadius: 8.71
-  punchRadius: 1.99
-  swipRadius: 4.11
+  chaseRadius: 15
+  punchRadius: 1.5
+  swipRadius: 2
   jumpAttackRadius: 20
   damagePerShot: 40
   intervalBetweenShots: 0.5
