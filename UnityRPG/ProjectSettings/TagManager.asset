@@ -9,6 +9,8 @@ TagManager:
   - EnemyWeapon
   - MagicOrb
   - Weapon
+  - Bullet
+  - Terrain
   layers:
   - Default
   - TransparentFX
