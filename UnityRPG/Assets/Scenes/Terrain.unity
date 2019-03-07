@@ -1744,6 +1744,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565233487}
   m_CullTransparentMesh: 0
+--- !u!1 &577863880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7754737400830157334, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 733186451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598042970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,6 +2624,16 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754737401086645307, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+        type: 3}
+      propertyPath: swordCol
+      value: 
+      objectReference: {fileID: 577863880}
+    - target: {fileID: 7754737400830157334, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword Col
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}

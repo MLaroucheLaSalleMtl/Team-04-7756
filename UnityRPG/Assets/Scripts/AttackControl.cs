@@ -20,6 +20,8 @@ public class AttackControl : MonoBehaviour
     private ThirdPersonCharacter Maria;
     private bool canAttack = true;
 
+    [SerializeField] private GameObject swordCol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
+        swordCol.SetActive(false);
         //audioSwordAttack = this.GetComponent<AudioSource>();
     }
 
@@ -61,6 +64,27 @@ public class AttackControl : MonoBehaviour
                 isEnemy = false;
             }
         }
+
+        //particleTimer += Time.deltaTime;
+        //if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
+        //{
+
+        //    m_Animator.SetTrigger("Attack");
+        //    particle.enabled = true;
+        //    particleTimer = 0.0f;            
+        //    Maria.Stamina -= 15;
+        //    canAttack = false;
+        //    Invoke("ResetAttack", 1.0f);
+        //}
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+        //    m_Animator.SetTrigger("SpellAttack");
+        //}
+        //if(particleTimer > 1.0f)
+        //{
+        //    particle.enabled = false;
+        //    isEnemy = false;
+        //}
     }
 
     public void SpellAttack()
@@ -90,5 +114,15 @@ public class AttackControl : MonoBehaviour
     public void ResetAttack()
     {
         canAttack = true;
+    }
+
+    private void AttackStart()
+    {
+        swordCol.SetActive(true);
+    }
+
+    private void AttackEnd()
+    {
+        swordCol.SetActive(false);
     }
 }
