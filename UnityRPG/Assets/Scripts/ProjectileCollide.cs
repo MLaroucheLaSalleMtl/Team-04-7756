@@ -28,6 +28,7 @@ public class ProjectileCollide : MonoBehaviour
     {
         Debug.Log("Called hit");
         // Make the projectile explode
+
         if (col.gameObject.tag == "Boss")
         {
             Debug.Log("BOSS HAS BEEN HIT@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -37,13 +38,14 @@ public class ProjectileCollide : MonoBehaviour
 
             col.gameObject.GetComponent<Boss>().currentHealthPoints -= 25;
         }
-        if(col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy")
         {
             Debug.Log("ENEMY HAS BEEN HIT@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 
             col.gameObject.GetComponent<Enemy>().currentHealthPoints -= 35;
         }
+
         Explode(col.contacts[0].point);
 
     }

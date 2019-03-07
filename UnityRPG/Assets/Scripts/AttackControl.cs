@@ -53,13 +53,13 @@ public class AttackControl : MonoBehaviour
         if (!Input.GetButton("Fire2"))
         {
             particleTimer += Time.deltaTime;
-            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 25)
+            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)// && hasSword == true)
             {
 
                 m_Animator.SetTrigger("Attack");
                 particle.enabled = true;
                 particleTimer = 0.0f;
-                Maria.Stamina -= 25;
+                Maria.Stamina -= 15;
                 canAttack = false;
                 Invoke("ResetAttack", 1.0f);
 

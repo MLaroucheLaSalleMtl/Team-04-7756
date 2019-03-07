@@ -12,6 +12,8 @@ public class OpenBox : MonoBehaviour
     [SerializeField] private GameObject playerWithSword;
     [SerializeField] private GameObject playerWithoutSword;
     private bool canInteract;
+    private bool canOpen;
+    private bool canClose;
 
     AttackControl attackControl;
 
@@ -25,6 +27,8 @@ public class OpenBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canOpen = true;
+        canClose = false;
         player = GameObject.FindGameObjectWithTag("Player");
         closedBox.SetActive(true);
         openedBox.SetActive(false);
@@ -44,7 +48,7 @@ public class OpenBox : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (canOpen)
+                if (canInteract)
                 {
                     closedBox.SetActive(false);
                     openedBox.SetActive(true);

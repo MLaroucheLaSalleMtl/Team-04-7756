@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-   // [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-    //[RequireComponent(typeof(ThirdPersonEnemy))]
+    [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
+    [RequireComponent(typeof(ThirdPersonEnemy))]
     public class AIEnemyControl : MonoBehaviour
     {
-        private UnityEngine.AI.NavMeshAgent agent;// { get; private set; }             // the navmesh agent required for the path finding
-        private ThirdPersonEnemy character; //{ get; private set; } // the character we are controlling
-        [SerializeField] Transform target;                                    // target to aim for
+        public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
+        public ThirdPersonEnemy character { get; private set; } // the character we are controlling
+        public Transform target;                                    // target to aim for
 
 
         private void Start()
