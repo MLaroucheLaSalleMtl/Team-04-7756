@@ -30,9 +30,9 @@ public class ProjectileShoot : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (Maria.Mana >= 15)
+                if (Maria.Mana >= 30)
                 {
-                    Maria.Mana -= 15;
+                    Maria.Mana -= 30;
                     Fire();
                 }
             }
@@ -49,6 +49,7 @@ public class ProjectileShoot : MonoBehaviour
         GameObject fireBall = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation);
        // fireBall.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
 
+
         Debug.Log("Called Mana");
         // if (!infiniteAmmo)
         // {
@@ -60,5 +61,6 @@ public class ProjectileShoot : MonoBehaviour
         // Play the gunshot sound
         GetComponent<AudioSource>().PlayOneShot(fireSound);
 
+        Destroy(fireBall, 5.0f);
     }
 }

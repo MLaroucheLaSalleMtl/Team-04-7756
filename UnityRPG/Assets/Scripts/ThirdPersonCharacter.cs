@@ -265,7 +265,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
             m_MoveSpeedMultiplier = 2.25f;
             m_Animator.SetTrigger("Roll");
             Invoke("RollReset", 0.7f);
-            Stamina = Stamina - 15;
+            Stamina = Stamina - 25;
                 
 
         //    //stamina = stamina - 20f;

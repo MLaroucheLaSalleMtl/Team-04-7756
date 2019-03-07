@@ -12,6 +12,8 @@ TagManager:
   - Fire
   - Bullet
   - Dead Zone
+  - Bullet
+  - Terrain
   layers:
   - Default
   - TransparentFX
