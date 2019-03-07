@@ -9,6 +9,9 @@ TagManager:
   - EnemyWeapon
   - MagicOrb
   - Weapon
+  - Fire
+  - Bullet
+  - Dead Zone
   layers:
   - Default
   - TransparentFX
