@@ -27,6 +27,9 @@ public class Enemy : MonoBehaviour
     Animator m_Animator;    //should be in the ThirdPersonEney.cs
     float rotateSpeed = 3f;
 
+    [SerializeField] private AudioSource attackSFX;
+    //AudioClip attackSFX;
+
 
     public float healthAsPercentage
     {
@@ -43,6 +46,7 @@ public class Enemy : MonoBehaviour
         aIEnemyControl = GetComponent<AIEnemyControl>();
         thirdPersonEnemy = GetComponent<ThirdPersonEnemy>();
         m_Animator = GetComponent<Animator>();
+        attackSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,6 +79,14 @@ public class Enemy : MonoBehaviour
         {
             aIEnemyControl.SetTarget(transform);
         }
+
+        //if enemy hp <= 0: death animation, stop chasing player, Clean it from scene after 3 sec.
+        if(currentHealthPoints <= 0f)
+        {
+            m_Animator.SetTrigger("Die");
+            aIEnemyControl.SetTarget(transform);
+            Destroy(gameObject, 3f);
+        }
     }
 
     void SpawnProjectile()
@@ -88,6 +100,16 @@ public class Enemy : MonoBehaviour
         Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Weapon")
+        {
+            attackSFX.Play();
+            currentHealthPoints -= 20f;
+            
+        }
     }
 
     void OnDrawGizmos()

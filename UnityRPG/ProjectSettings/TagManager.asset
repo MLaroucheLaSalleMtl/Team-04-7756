@@ -5,9 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Weapen
   - Projectile
   - EnemyWeapon
+<<<<<<< HEAD
+=======
+  - MagicOrb
+  - Weapon
+  - Bullet
+  - Terrain
+>>>>>>> master
   layers:
   - Default
   - TransparentFX

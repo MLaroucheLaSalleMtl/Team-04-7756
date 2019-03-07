@@ -114,7 +114,10 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         Health = Mathf.Clamp(Health - damage, 0f, Health);
+<<<<<<< HEAD
         //TODO if Health => Game Over
+=======
+>>>>>>> master
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -266,7 +269,11 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
             m_MoveSpeedMultiplier = 2.25f;
             m_Animator.SetTrigger("Roll");
             Invoke("RollReset", 0.7f);
+<<<<<<< HEAD
             Stamina = Stamina - 15;
+=======
+            Stamina = Stamina - 25;
+>>>>>>> master
                 
 
         //    //stamina = stamina - 20f;

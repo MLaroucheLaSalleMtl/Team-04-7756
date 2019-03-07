@@ -12,7 +12,7 @@ public class AttackControl : MonoBehaviour
     ParticleSystem.EmissionModule particle;
     private float particleTimer;
     private bool isEnemy;
-    [SerializeField] private AudioSource audioSwordAttack;
+    //private AudioSource audioSwordAttack;
     [SerializeField] private GameObject projectile;
     //public AudioClip hitEnemy;
     //public AudioClip swingSword;
@@ -31,12 +31,13 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
-        audioSwordAttack = GetComponent<AudioSource>();
+        //audioSwordAttack = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         particleTimer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
         {
@@ -57,6 +58,31 @@ public class AttackControl : MonoBehaviour
         {
             particle.enabled = false;
             isEnemy = false;
+=======
+        if (!Input.GetButton("Fire2"))
+        {
+            particleTimer += Time.deltaTime;
+            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
+            {
+
+                m_Animator.SetTrigger("Attack");
+                particle.enabled = true;
+                particleTimer = 0.0f;
+                Maria.Stamina -= 15;
+                canAttack = false;
+                Invoke("ResetAttack", 1.0f);
+
+            }
+            if (Input.GetButtonDown("Fire2"))
+            {
+                m_Animator.SetTrigger("SpellAttack");
+            }
+            if (particleTimer > 1.0f)
+            {
+                particle.enabled = false;
+                isEnemy = false;
+            }
+>>>>>>> master
         }
     }
 
@@ -81,7 +107,6 @@ public class AttackControl : MonoBehaviour
         if(isEnemy == true)
         {
             Debug.Log("Sword Attack");
-            audioSwordAttack.Play();
         }
     }
 
