@@ -129,6 +129,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
         if (Health <= 0.0f && alive == true)
         {
             alive = false;
+            Die();
             //Debug.Log("Wizard right now is = " + alive);
         }
         if (alive == true)
@@ -162,6 +163,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
                     StaminaRegen();
                 }
             }
+           
         }
     }
 
