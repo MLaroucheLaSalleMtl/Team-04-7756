@@ -114,7 +114,6 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         Health = Mathf.Clamp(Health - damage, 0f, Health);
-        //TODO if Health => Game Over
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -130,6 +129,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
         if (Health <= 0.0f && alive == true)
         {
             alive = false;
+            Die();
             //Debug.Log("Wizard right now is = " + alive);
         }
         if (alive == true)
@@ -163,6 +163,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
                     StaminaRegen();
                 }
             }
+           
         }
     }
 
@@ -266,7 +267,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
             m_MoveSpeedMultiplier = 2.25f;
             m_Animator.SetTrigger("Roll");
             Invoke("RollReset", 0.7f);
-            Stamina = Stamina - 15;
+            Stamina = Stamina - 25;
                 
 
         //    //stamina = stamina - 20f;

@@ -5,9 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Weapen
   - Projectile
   - EnemyWeapon
+  - MagicOrb
+  - Weapon
+  - Fire
+  - Bullet
+  - Dead Zone
+  - Bullet
+  - Terrain
+  - Boss
   layers:
   - Default
   - TransparentFX
