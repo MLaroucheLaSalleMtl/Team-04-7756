@@ -22,7 +22,7 @@ public class LockTarget : MonoBehaviour
     public Dictionary<Transform, float> rank = new Dictionary<Transform, float>();
     private Transform get;
     private Ray ray;
-    private Vector3 targetMarkOffset;
+    private Vector3 targetMarkOffset = new Vector3(0f, 1f, 0f);
     
     //private Image reticle;
     private GameObject targetMark;
@@ -39,6 +39,8 @@ public class LockTarget : MonoBehaviour
     {
         LockingRange();
         targetMark.transform.position = GetTargetPositionWithUI(get.transform.position + targetMarkOffset);
+        //Debug.Log($"Midkey : {Input.GetAxis("Mouse ScrollWheel")}");
+
     }
 
     void LockingRange()
@@ -87,17 +89,17 @@ public class LockTarget : MonoBehaviour
             //Debug.Log("get is " + get + "...distance is " + b);
             Debug.Log($"Number of gameobject: {list_obj.Count}");
 
-            if (Input.GetButtonDown("Targeting"))
+            if (Input.GetButtonDown("Targeting"))   //left ctrl show the target
             {
                 isTargeting = true;
                 targetMark.SetActive(true);
                 
             }
-            //if (Input.GetButtonUp("Targeting"))
-            //{
-            //    isTargeting = false;
-            //    targetMark.SetActive(false);
-            //}
+            if (Input.GetButtonUp("Targeting"))
+            {
+                isTargeting = false;
+                targetMark.SetActive(false);
+            }
 
         }
     }
