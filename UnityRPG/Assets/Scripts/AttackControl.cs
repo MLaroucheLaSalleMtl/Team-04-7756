@@ -10,19 +10,18 @@ public class AttackControl : MonoBehaviour
     Animator m_Animator;
     CapsuleCollider m_Capsule;
     ParticleSystem.EmissionModule particle;
+
+    [SerializeField] private GameObject swordCol;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] GameObject projectileSocket;
+    [SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
+
     private float particleTimer;
     public bool hasSword;
     private bool isEnemy;
-    //private AudioSource audioSwordAttack;
-    [SerializeField] private GameObject projectile;
-    //[SerializeField] private GameObject playerWithSword;
-    //public AudioClip hitEnemy;
-    //public AudioClip swingSword;
-    //[SerializeField] AudioSource audioSwingSword;
     private ThirdPersonCharacter Maria;
     private bool canAttack = true;
 
-    [SerializeField] private GameObject swordCol;
 
     // Start is called before the first frame update
     void Start()
@@ -50,30 +49,28 @@ public class AttackControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Input.GetButton("Fire2"))
+        particleTimer += Time.deltaTime;
+        if (Input.GetButtonDown("Fire1") && canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
         {
-            particleTimer += Time.deltaTime;
-            if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)// && hasSword == true)
-            {
 
-                m_Animator.SetTrigger("Attack");
-                particle.enabled = true;
-                particleTimer = 0.0f;
-                Maria.Stamina -= 15;
-                canAttack = false;
-                Invoke("ResetAttack", 1.0f);
+            m_Animator.SetTrigger("Attack");
+            particle.enabled = true;
+            particleTimer = 0.0f;
+            //Maria.Stamina -= 15;
+            canAttack = false;
+            Invoke("ResetAttack", 1.0f);
 
-            }
-            if (Input.GetButtonDown("Fire2"))
-            {
-                m_Animator.SetTrigger("SpellAttack");
-            }
-            if (particleTimer > 1.0f)
-            {
-                particle.enabled = false;
-                isEnemy = false;
-            }
         }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            m_Animator.SetTrigger("SpellAttack");
+        }
+        if (particleTimer > 1.0f)
+        {
+            particle.enabled = false;
+            isEnemy = false;
+        }
+        
 
         //particleTimer += Time.deltaTime;
         //if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)

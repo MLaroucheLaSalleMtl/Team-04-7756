@@ -6,6 +6,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float maxHealthPoints = 100f;
+    private float currentHealthPoints = 100f;
     [SerializeField] float chaseRadius = 5f;
     [SerializeField] float attackRadius = 2f;
     [SerializeField] GameObject projectileToUse;
@@ -19,7 +20,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float intervalBetweenShots = 0.5f;
 
 
-    public float currentHealthPoints = 100f;
     AIEnemyControl aIEnemyControl = null;
     ThirdPersonEnemy thirdPersonEnemy = null;
     //ThirdPersonEnemy thirdPersonEnemy = null;
