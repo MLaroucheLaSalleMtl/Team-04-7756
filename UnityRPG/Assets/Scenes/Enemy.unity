@@ -179,10 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 323974183, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
 --- !u!1 &935241959 stripped
@@ -473,6 +469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: erika_archer_bow_arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 2295235236326333908, guid: 18c58cf75db6dba46bb3d2ef89b701a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2295235236326333905, guid: 18c58cf75db6dba46bb3d2ef89b701a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,6 +551,14 @@ PrefabInstance:
     - target: {fileID: 2088676227, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088676227, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088676227, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2088676231, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2630,6 +2639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erika_Archer_Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 2435427380998640600, guid: d8ba95275d85754458b3aff4c052ef57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2435427380998640578, guid: d8ba95275d85754458b3aff4c052ef57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2684,6 +2698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435427380998640581, guid: d8ba95275d85754458b3aff4c052ef57,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ba95275d85754458b3aff4c052ef57, type: 3}
