@@ -48,7 +48,7 @@ public class OpenBox : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (canInteract)
+                if (canOpen)
                 {
                     closedBox.SetActive(false);
                     openedBox.SetActive(true);

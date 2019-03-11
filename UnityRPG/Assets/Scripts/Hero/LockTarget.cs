@@ -15,6 +15,7 @@ public class LockTarget : MonoBehaviour
     public float DownAngle = 45f;
 
     public bool isTargeting = false;
+    private bool haveEnemy = false;
     public Color color = new Color(0f, 1f, 0f, 0.04f);
 
     //public Transform[] targets;
@@ -38,7 +39,10 @@ public class LockTarget : MonoBehaviour
     void Update()
     {
         LockingRange();
-        targetMark.transform.position = GetTargetPositionWithUI(get.transform.position + targetMarkOffset);
+        if(rank.Count > 0)
+        {
+            targetMark.transform.position = GetTargetPositionWithUI(get.transform.position + targetMarkOffset);
+        }
         //Debug.Log($"Midkey : {Input.GetAxis("Mouse ScrollWheel")}");
 
     }
