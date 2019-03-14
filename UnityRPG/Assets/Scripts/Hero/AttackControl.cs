@@ -52,16 +52,20 @@ public class AttackControl : MonoBehaviour
     void Update()
     {
         particleTimer += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
+        float interval = Time.deltaTime;
+        if (Input.GetButtonDown("Fire1")) //&& canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
         {
 
-            m_Animator.SetTrigger("Attack");
+            m_Animator.SetBool("Attack", true);
             particle.enabled = true;
             particleTimer = 0.0f;
             //Maria.Stamina -= 15;
             canAttack = false;
-            Invoke("ResetAttack", 1.0f);
-
+            //Invoke("ResetAttack", 1.0f);
+            if(Input.GetButtonDown("Fire1") && interval <= 0.5f)
+            {
+                //m_Animator.SetTarget("Attack2");
+            }
         }
         if (Input.GetButtonDown("Fire2"))
         {
