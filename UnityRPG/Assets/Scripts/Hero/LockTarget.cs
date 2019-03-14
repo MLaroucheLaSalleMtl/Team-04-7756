@@ -8,11 +8,13 @@ using UnityEngine.UI;
 public class LockTarget : MonoBehaviour
 {
     public float minRange = 0f;
+    private float minAngle = 0f;
     public float maxRange = 100f;
+    private float maxAngle = 0f;
     public float rightAngle = 45f;
     public float leftAngle = 45f;
-    public float UpAngle = 45f;
-    public float DownAngle = 45f;
+    public float upAngle = 45f;
+    public float downAngle = 45f;
 
     public bool isTargeting = false;
     private bool haveEnemy = false;
@@ -23,7 +25,7 @@ public class LockTarget : MonoBehaviour
     public Dictionary<Transform, float> rank = new Dictionary<Transform, float>();
     private Transform get;
     private Ray ray;
-    private Vector3 targetMarkOffset;
+    private Vector3 targetMarkOffset;// = new Vector3(0f, 1f, 0f);
     
     //private Image reticle;
     private GameObject targetMark;
@@ -34,7 +36,13 @@ public class LockTarget : MonoBehaviour
         targets = GameObject.FindGameObjectsWithTag("Enemy");
         targetMark = GameObject.Find("TargetMark");
         targetMark.SetActive(false);
-    }
+        minAngle = 0f;
+        maxAngle = Camera.main.fieldOfView / 2;
+        rightAngle = Camera.main.fieldOfView / 2;
+        leftAngle = Camera.main.fieldOfView / 2;
+        upAngle = Camera.main.fieldOfView / 2;
+        downAngle = Camera.main.fieldOfView / 2;
+}
     // Update is called once per frame
     void Update()
     {
@@ -51,16 +59,35 @@ public class LockTarget : MonoBehaviour
     {
         foreach (GameObject i in targets)
         {
+            // Calculate the angle between current target and player.
             float distance = (i.transform.position - transform.position).magnitude;
-            if (distance >= minRange && distance <= maxRange)
+            float cameraRotation = Camera.main.transform.eulerAngles.x;
+            float angle = (Mathf.Asin((i.transform.position.x - transform.position.x) / distance) / Mathf.PI * 180);// - cameraRotation;
+            //float angle = Mathf.Atan(((i.transform.position.x - transform.position.x) / Mathf.PI * 180) / distance);
+
+
+            //if (distance >= minRange && distance <= maxRange)
+            //{
+            //    if (!rank.ContainsKey(i.transform))
+            //    {
+            //        rank.Add(i.transform, distance);
+            //    }
+            //    else
+            //    {
+            //        rank[i.transform] = distance;
+            //    }
+
+            //}
+
+            if (angle >= minAngle && angle <= maxAngle)
             {
                 if (!rank.ContainsKey(i.transform))
                 {
-                    rank.Add(i.transform, distance);
+                    rank.Add(i.transform, angle);
                 }
                 else
                 {
-                    rank[i.transform] = distance;
+                    rank[i.transform] = angle;
                 }
 
             }
@@ -70,16 +97,20 @@ public class LockTarget : MonoBehaviour
 
     void GetRange()
     {
-        List<float> list_distance = new List<float>();
+        //List<float> list_distance = new List<float>();
+        List<float> list_angle = new List<float>();
         List<Transform> list_obj = new List<Transform>();
+        float angle = 0f;
         float b = 0;
         if (rank.Count > 0) //if there are any enemies (rank is Dictionary that store enemies)
         {
             foreach (Transform tra1 in rank.Keys)   //if tran1 is not in the Dictionary
             {
-                list_distance.Add(rank[tra1]);      //add the distance to player into Dictionary (float)
+                //list_distance.Add(rank[tra1]);  //add the distance to player into Dictionary (float)
+                list_angle.Add(rank[tra1]);
             }
-            b = list_distance.Min();
+            b = list_angle.Min();
+            //angle = list_angle.Min();
 
             foreach (Transform tra2 in rank.Keys)   
             {
@@ -91,7 +122,8 @@ public class LockTarget : MonoBehaviour
             get = list_obj[0];
 
             //Debug.Log("get is " + get + "...distance is " + b);
-            Debug.Log($"Number of gameobject: {list_obj.Count}");
+            //Debug.Log($"Number of gameobject: {list_obj.Count}");
+            Debug.Log("get is " + get + "...angle is " + angle);
 
             if (Input.GetButtonDown("Targeting"))
             {
@@ -99,11 +131,12 @@ public class LockTarget : MonoBehaviour
                 targetMark.SetActive(true);
                 
             }
-            //if (Input.GetButtonUp("Targeting"))
-            //{
-            //    isTargeting = false;
-            //    targetMark.SetActive(false);
-            //}
+
+            if (Input.GetButtonUp("Targeting"))
+            {
+                isTargeting = false;
+                targetMark.SetActive(false);
+            }
 
         }
     }
@@ -130,27 +163,27 @@ public class LockTarget : MonoBehaviour
         Handles.DrawSolidArc(transform.position, transform.up, transform.forward, -leftAngle, maxRange);
         Handles.DrawSolidArc(transform.position, transform.up, transform.forward, rightAngle, maxRange);
 
-        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, -UpAngle, maxRange);
-        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, DownAngle, maxRange);
+        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, -upAngle, maxRange);
+        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, downAngle, maxRange);
 
         Handles.color = new Color(1, 0, 0, color.a);
         Handles.DrawSolidArc(transform.position, transform.up, transform.forward, -leftAngle, minRange);
         Handles.DrawSolidArc(transform.position, transform.up, transform.forward, rightAngle, minRange);
 
-        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, -UpAngle, minRange);
-        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, DownAngle, minRange);
+        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, -upAngle, minRange);
+        Handles.DrawSolidArc(transform.position, transform.right, transform.forward, downAngle, minRange);
 
         //绘制扇形的弧线，第一个参数圆的中心点，第二个参数圆的法线，第三个参数弧线起始点，第四个参数弧度，第五个参数圆弧半径
         Handles.color = new Color(color.r, color.g, color.b);
         Handles.DrawWireArc(transform.position, transform.up, transform.forward, -leftAngle, maxRange);
         Handles.DrawWireArc(transform.position, transform.up, transform.forward, rightAngle, maxRange);
-        Handles.DrawWireArc(transform.position, transform.right, transform.forward, -UpAngle, maxRange);
-        Handles.DrawWireArc(transform.position, transform.right, transform.forward, DownAngle, maxRange);
+        Handles.DrawWireArc(transform.position, transform.right, transform.forward, -upAngle, maxRange);
+        Handles.DrawWireArc(transform.position, transform.right, transform.forward, downAngle, maxRange);
 
         Handles.DrawWireArc(transform.position, transform.up, transform.forward, -leftAngle, minRange);
         Handles.DrawWireArc(transform.position, transform.up, transform.forward, rightAngle, minRange);
-        Handles.DrawWireArc(transform.position, transform.right, transform.forward, -UpAngle, minRange);
-        Handles.DrawWireArc(transform.position, transform.right, transform.forward, DownAngle, minRange);
+        Handles.DrawWireArc(transform.position, transform.right, transform.forward, -upAngle, minRange);
+        Handles.DrawWireArc(transform.position, transform.right, transform.forward, downAngle, minRange);
 
     }
 }

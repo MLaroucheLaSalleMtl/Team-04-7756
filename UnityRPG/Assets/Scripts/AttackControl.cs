@@ -12,6 +12,7 @@ public class AttackControl : MonoBehaviour
     ParticleSystem.EmissionModule particle;
 
     [SerializeField] private GameObject swordCol;
+    //private GameObject swordCol;
     [SerializeField] private GameObject projectile;
     [SerializeField] GameObject projectileSocket;
     [SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
@@ -34,6 +35,7 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
+        //swordCol = GameObject.Find("SwordCol").GetComponent<GameObject>();
         swordCol.SetActive(false);
         hasSword = false;
         //playerWithSword.SetActive(false);

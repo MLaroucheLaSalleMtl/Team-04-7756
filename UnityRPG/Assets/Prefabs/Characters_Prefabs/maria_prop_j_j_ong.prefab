@@ -8501,7 +8501,7 @@ GameObject:
   - component: {fileID: 7754737400830157332}
   - component: {fileID: 1132968628}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SwordCol
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13646,8 +13646,8 @@ MonoBehaviour:
   maxRange: 100
   rightAngle: 45
   leftAngle: 45
-  UpAngle: 45
-  DownAngle: 45
+  upAngle: 45
+  downAngle: 45
   isTargeting: 0
   color: {r: 0, g: 1, b: 0, a: 0.04}
 --- !u!114 &1802813570
