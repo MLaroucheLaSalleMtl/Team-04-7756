@@ -18,12 +18,12 @@ public class Weapon : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss")
-        {
-            attackControl.SwingSword();
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss")
+    //    {
+    //        attackControl.SwingSword();
+    //    }
+    //}
 
 }

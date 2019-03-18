@@ -123,7 +123,7 @@ public class LockTarget : MonoBehaviour
 
             //Debug.Log("get is " + get + "...distance is " + b);
             //Debug.Log($"Number of gameobject: {list_obj.Count}");
-            Debug.Log("get is " + get + "...angle is " + angle);
+            //Debug.Log("get is " + get + "...angle is " + angle);
 
             if (Input.GetButtonDown("Targeting"))
             {
