@@ -136,7 +136,7 @@ public class AttackControl : MonoBehaviour
     {
         if (canClick)
         {
-            numOfClicks = 1;
+            numOfClicks++;
         }
         if (numOfClicks == 1)
         {
