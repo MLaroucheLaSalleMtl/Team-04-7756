@@ -31,6 +31,7 @@ public class AttackControl : MonoBehaviour
     private bool canClick;
 
     private float timer;
+    private bool isButtonDown;
 
     // Start is called before the first frame update
     void Start()
@@ -56,14 +57,25 @@ public class AttackControl : MonoBehaviour
     
     private void ComboStarter()
     {
+        //Debug.Log($"Clicks : {numOfClicks}");
+
         if (canClick)// && timer < 0.5f)
         {
             numOfClicks++;
         }
-        if (numOfClicks == 1)
+        if (numOfClicks >= 1)
         {
-            m_Animator.SetInteger("Animation", 1);
+            m_Animator.SetBool("Attacking", true);
+            m_Animator.SetTrigger("Attack1");
         }
+    }
+
+    private void SetZero()
+    {
+        numOfClicks = 0;
+        m_Animator.SetInteger("Animation", 0);
+        canClick = true;
+        m_Animator.SetBool("Attacking", false);
     }
 
     public void ComboCheck()
@@ -71,104 +83,146 @@ public class AttackControl : MonoBehaviour
         canClick = false;
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && numOfClicks == 1)
         {
-            m_Animator.SetInteger("Animation", 5);
-            canClick = true;
-            numOfClicks = 0;
+            m_Animator.SetBool("Attacking", false);
+            m_Animator.SetInteger("Animation", 0);
+            canClick = false;
+            //numOfClicks = 0;
         }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && numOfClicks >= 2)
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && numOfClicks > 1)
         {
+            m_Animator.SetBool("Attacking", false);
             m_Animator.SetInteger("Animation", 2);
             canClick = true;
-            //numOfClicks = 2;
+            //numOfClicks = 0;
         }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_2") && numOfClicks == 2)
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_2") && numOfClicks == 1)
         {
-            m_Animator.SetInteger("Animation", 5);
+            m_Animator.SetBool("Attacking", false);
+            m_Animator.SetInteger("Animation", 0);
             canClick = true;
             numOfClicks = 0;
         }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_2") && numOfClicks >= 3)
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_2") && numOfClicks > 1)
         {
+            m_Animator.SetBool("Attacking", false);
             m_Animator.SetInteger("Animation", 3);
             canClick = true;
-            //numOfClicks = 3;
+            //numOfClicks = 0;
         }
-        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3"))
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3") && numOfClicks == 1)
         {
-            Debug.Log("Attack 3");
-            m_Animator.SetInteger("Animation", 5);
+            m_Animator.SetBool("Attacking", false);
+            m_Animator.SetInteger("Animation", 0);
+            canClick = true;
+            //numOfClicks = 0;
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3") && numOfClicks >= 1)
+        {
+            m_Animator.SetBool("Attacking", false);
+            m_Animator.SetInteger("Animation", 4);
+            canClick = true;
+            //numOfClicks = 0;
+        }
+        else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_4"))
+        {
+            //m_Animator.SetBool("Attacking", false);
+            Debug.Log("Attack 4");
+            m_Animator.SetInteger("Animation", 0);
             canClick = true;
             numOfClicks = 0;
         }
+
+        //else
+        //{
+        //    m_Animator.SetBool("Attacking", false);
+        //    m_Animator.SetInteger("Animation", 0);
+        //    canClick = true;
+        //    numOfClicks = 0;
+        //}
+
+        //numOfClicks = 0;
+        //if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3") && numOfClicks > 1)
+        //{
+        //    m_Animator.SetInteger("Animation", 5);
+        //    canClick = true;
+        //    numOfClicks = 0;
+        //}
     }
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
             ComboStarter();
-            timer = 0f;
         }
+        //if (Input.GetButtonUp("Fire1"))
+        //{
+        //    isButtonDown = false;
+        //    m_Animator.SetBool("IsButtonDown", false);
+        //}
+        //if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && isButtonDown)
+        //{
 
+        //}
         //if(currentAttack != null)
         //{
         //    AttackLogic();
         //    Attacks();
         //}
 
-        //particleTimer += Time.deltaTime;
-        //float attackTimer = Time.deltaTime;
-        //if (Input.GetButtonDown("Fire1") && canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
-        //{
-        //    if(actionState != ActionState.Attack1 && actionState != ActionState.Attack2)
-        //    {
-        //        actionState = ActionState.Attack1;
-        //    }else if(actionState == ActionState.Attack1 && playerAnimation[currentAttack.name].time > 1.0f)
-        //    {
-        //        actionState = ActionState.Attack2;
-        //    }
-        //    m_Animator.SetBool("Attacking", true);
-        //    m_Animator.SetTrigger("Attack1");
-            
-        //    particle.enabled = true;
-        //    particleTimer = 0.0f;
-        //    //Maria.Stamina -= 15;
-        //    canAttack = false;
-        //    Invoke("ResetAttack", 1.0f);
+            //particleTimer += Time.deltaTime;
+            //float attackTimer = Time.deltaTime;
+            //if (Input.GetButtonDown("Fire1") && canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
+            //{
+            //    if(actionState != ActionState.Attack1 && actionState != ActionState.Attack2)
+            //    {
+            //        actionState = ActionState.Attack1;
+            //    }else if(actionState == ActionState.Attack1 && playerAnimation[currentAttack.name].time > 1.0f)
+            //    {
+            //        actionState = ActionState.Attack2;
+            //    }
+            //    m_Animator.SetBool("Attacking", true);
+            //    m_Animator.SetTrigger("Attack1");
 
-        //}
-        //if (Input.GetButtonDown("Fire2"))
-        //{
-        //    m_Animator.SetTrigger("SpellAttack");
-        //}
-        //if (particleTimer > 1.0f)
-        //{
-        //    particle.enabled = false;
-        //    isEnemy = false;
-        //}
-        
+            //    particle.enabled = true;
+            //    particleTimer = 0.0f;
+            //    //Maria.Stamina -= 15;
+            //    canAttack = false;
+            //    Invoke("ResetAttack", 1.0f);
 
-        //particleTimer += Time.deltaTime;
-        //if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
-        //{
+            //}
+            //if (Input.GetButtonDown("Fire2"))
+            //{
+            //    m_Animator.SetTrigger("SpellAttack");
+            //}
+            //if (particleTimer > 1.0f)
+            //{
+            //    particle.enabled = false;
+            //    isEnemy = false;
+            //}
 
-        //    m_Animator.SetTrigger("Attack");
-        //    particle.enabled = true;
-        //    particleTimer = 0.0f;            
-        //    Maria.Stamina -= 15;
-        //    canAttack = false;
-        //    Invoke("ResetAttack", 1.0f);
-        //}
-        //if (Input.GetButtonDown("Fire2"))
-        //{
-        //    m_Animator.SetTrigger("SpellAttack");
-        //}
-        //if(particleTimer > 1.0f)
-        //{
-        //    particle.enabled = false;
-        //    isEnemy = false;
-        //}
+
+            //particleTimer += Time.deltaTime;
+            //if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
+            //{
+
+            //    m_Animator.SetTrigger("Attack");
+            //    particle.enabled = true;
+            //    particleTimer = 0.0f;            
+            //    Maria.Stamina -= 15;
+            //    canAttack = false;
+            //    Invoke("ResetAttack", 1.0f);
+            //}
+            //if (Input.GetButtonDown("Fire2"))
+            //{
+            //    m_Animator.SetTrigger("SpellAttack");
+            //}
+            //if(particleTimer > 1.0f)
+            //{
+            //    particle.enabled = false;
+            //    isEnemy = false;
+            //}
     }
 
     //public void SpellAttack()

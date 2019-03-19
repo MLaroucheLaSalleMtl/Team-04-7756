@@ -191,8 +191,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: SetZero
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ce4fdb47cafeb2d42a223c17e9f98f60,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.6705539
         functionName: ComboCheck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ce4fdb47cafeb2d42a223c17e9f98f60,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: SetZero
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: ce4fdb47cafeb2d42a223c17e9f98f60,
           type: 3}

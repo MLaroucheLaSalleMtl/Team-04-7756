@@ -261,7 +261,7 @@ public class ThirdPersonCharacter : MonoBehaviour
 
     public void Move(Vector3 move, bool jump)
 	{
-        if (Input.GetKeyDown(KeyCode.LeftShift))// && Stamina > 15 && canRoll)
+        if (Input.GetButtonDown("Roll"))// && Stamina > 15 && canRoll)
         {
             canRoll = false;
             m_MoveSpeedMultiplier = 2.25f;
