@@ -27,7 +27,10 @@ public class AttackControl : MonoBehaviour
     private bool canAttack = true;
 
     private int numOfClicks;
+    private int countClicks;
     private bool canClick;
+
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -45,96 +48,15 @@ public class AttackControl : MonoBehaviour
         hasSword = false;
 
         numOfClicks = 0;
+        countClicks = 0;
         canClick = true;
 
-        //playerWithSword.SetActive(false);
-        //audioSwordAttack = this.GetComponent<AudioSource>();
-
-        //if (playerAnimation.clip)
-        //{
-        //    currentAttack = playerAnimation.clip;
-        //}
-        //else
-        //{
-        //    currentAttack = playerAnimation["Idle"].clip;
-        //}
+        timer = Time.deltaTime;
     }
-    //void Awake()
-    //{
-    //    playerAnimation = GetComponent<Animation>() as Animation;
-    //}
-
-    //public void GetSword()
-    //{
-    //    hasSword = true;
-    //    //playerWithSword.SetActive(true);
-    //    //Destroy(gameObject);
-    //    //playerWithSword.transform.position = transform.position;
-    //}
-
-    //private enum ActionState
-    //{
-    //    Attack1,
-    //    Attack2,
-    //    Attack3,
-    //    Attack4,
-    //    Idle
-    //}
-    //private ActionState actionState = ActionState.Idle;
-
-    //void AttackLogic()
-    //{
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        if(actionState != ActionState.Attack1 && actionState != ActionState.Attack2)
-    //        {
-    //            actionState = ActionState.Attack1;
-    //        }else if(actionState == ActionState.Attack1 && playerAnimation[currentAttack.name].time > 1.0f)
-    //        {
-    //            actionState = ActionState.Attack2;
-    //        }
-    //    }
-    //}
-    //void Attacks()
-    //{
-    //    float delayTime = 0f;
-    //    switch (actionState)
-    //    {
-    //        case ActionState.Attack1:
-    //            delayTime = -0.1f;
-    //            playerAnimation.CrossFade("Attack1", 0.15f);
-    //            currentAttack = playerAnimation["Attack1"].clip;
-    //            break;
-    //        case ActionState.Attack2:
-    //            delayTime = -0.1f;
-    //            playerAnimation.CrossFade("Attack2", 0.15f);
-    //            currentAttack = playerAnimation["Attack2"].clip;
-    //            break;
-    //        case ActionState.Attack3:
-    //            delayTime = -0.1f;
-    //            playerAnimation.CrossFade("Attack3", 0.15f);
-    //            currentAttack = playerAnimation["Attack3"].clip;
-    //            break;
-    //        case ActionState.Attack4:
-    //            delayTime = -0.1f;
-    //            playerAnimation.CrossFade("Attack4", 0.15f);
-    //            currentAttack = playerAnimation["Attack4"].clip;
-    //            break;
-    //        case ActionState.Idle:
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //    //Switch to defalt if an animation is almost over
-    //    if(playerAnimation[currentAttack.name].time > (playerAnimation[currentAttack.name].length + delayTime))
-    //    {
-    //        actionState = ActionState.Idle;
-    //        currentAttack = playerAnimation["Idle"].clip;
-    //    }
-    //}
+    
     private void ComboStarter()
     {
-        if (canClick)
+        if (canClick)// && timer < 0.5f)
         {
             numOfClicks++;
         }
@@ -157,6 +79,7 @@ public class AttackControl : MonoBehaviour
         {
             m_Animator.SetInteger("Animation", 2);
             canClick = true;
+            //numOfClicks = 2;
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_2") && numOfClicks == 2)
         {
@@ -168,6 +91,7 @@ public class AttackControl : MonoBehaviour
         {
             m_Animator.SetInteger("Animation", 3);
             canClick = true;
+            //numOfClicks = 3;
         }
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3"))
         {
@@ -176,15 +100,15 @@ public class AttackControl : MonoBehaviour
             canClick = true;
             numOfClicks = 0;
         }
-
-        canClick = true;
     }
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
             ComboStarter();
+            timer = 0f;
         }
 
         //if(currentAttack != null)
