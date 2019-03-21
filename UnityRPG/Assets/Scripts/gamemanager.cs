@@ -50,6 +50,7 @@ public class gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(QualitySettings.GetQualityLevel());
         if (Input.GetButton("Cancel")){
             PauseGame();
         }
