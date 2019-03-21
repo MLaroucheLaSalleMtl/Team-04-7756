@@ -11,6 +11,7 @@ public class OpenBox : MonoBehaviour
     [SerializeField] private GameObject closedBox;
 
     private bool canInteract;
+    //private bool canOpen = true;
 
     private void OnDrawGizmos()
     {
@@ -34,13 +35,22 @@ public class OpenBox : MonoBehaviour
         {
             canInteract = true;
         }
-        if (canInteract)
+        if (canInteract /*&& canOpen*/)
         {
             if (Input.GetButtonDown("Interact"))
             {
+                //canOpen = false;
                 closedBox.SetActive(false);
                 openedBox.SetActive(true);
             }
         }
+        //if(canInteract && !canOpen)
+        //{
+        //    if (Input.GetButtonDown("Interact"))
+        //    {
+        //        closedBox.SetActive(true);
+        //        openedBox.SetActive(false);
+        //    }
+        //}
     }
 }

@@ -8,7 +8,6 @@ public class gamemanager : MonoBehaviour
     private AsyncOperation async;
     private bool isPaused = false;
     [SerializeField] private ThirdPersonCharacter tp;
-
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject MaskPanel;
     [SerializeField] private GameObject GameoverPanel;
@@ -45,6 +44,30 @@ public class gamemanager : MonoBehaviour
         async.allowSceneActivation = true;
     }
 
+    public void Restart()
+    {
+        tp.Health = 200;
+        tp.Mana = 100f;
+        tp.Stamina = 100f;
+        PausePanel.SetActive(false);
+        RestartGame();
+        async.allowSceneActivation = true;
+        Time.timeScale = 1;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Confined;
+        PausePanel.SetActive(false);
+        MaskPanel.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        if (async == null)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            async = SceneManager.LoadSceneAsync(currentScene.buildIndex);
+        }
+    }
+
     public void GameOver()
     {
         Cursor.visible = true;
@@ -61,6 +84,7 @@ public class gamemanager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
     // Update is called once per frame
     void Update()
     {

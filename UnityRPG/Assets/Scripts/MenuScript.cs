@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     private string difficulties;
-    private AsyncOperation async;
-    [SerializeField] GameObject SettingPanel;
+    public AsyncOperation async;
     [SerializeField] private Dropdown diffDropdown;
 
     // Start is called before the first frame update
@@ -21,7 +20,7 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(difficulties);
+        //Debug.Log(difficulties);
         PreLoadScene();
     }
 
@@ -55,7 +54,7 @@ public class MenuScript : MonoBehaviour
         async.allowSceneActivation = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-    }
+    }   
 
     public void Exit()
     {
