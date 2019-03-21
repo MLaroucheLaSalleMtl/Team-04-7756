@@ -14,14 +14,12 @@ public class Boss : MonoBehaviour
     //[SerializeField] GameObject projectileToUse;
     //[SerializeField] GameObject projectileSocket;
     //[SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
-   // private bool dead;
+
 
     private bool isAttacking = false;
     [SerializeField] float damagePerShot = 50f;
     [SerializeField] float intervalBetweenShots = 0.5f;
 
-    [SerializeField] GameObject fist;//====================================================================
-    [SerializeField] GameObject arm;//=====================================================================
 
     public float currentHealthPoints = 1000f;
     AIEnemyControl aIEnemyControl = null;
@@ -60,7 +58,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         BossAttack fistComponent = BossCol.GetComponent<BossAttack>();
-        //fistComponent.SetDamage(damagePerShot);
+        fistComponent.SetDamage(damagePerShot);
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
@@ -68,10 +66,8 @@ public class Boss : MonoBehaviour
 
         if (distanceToPlayer <= punchRadius)// && !isAttacking)
         {
-
             m_Animator.SetBool("IsSwip", false);
             m_Animator.SetBool("IsPunch", true);
-            fist.GetComponent<SphereCollider>().enabled = true;
             //isAttacking = true;
             
             //InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
@@ -82,8 +78,6 @@ public class Boss : MonoBehaviour
         {
             m_Animator.SetBool("IsPunch", false);
             m_Animator.SetBool("IsSwip", true);
-
-            arm.GetComponent<CapsuleCollider>().enabled = true;
             //isAttacking = true;
             
         }
@@ -115,9 +109,7 @@ public class Boss : MonoBehaviour
         //if enemy hp <= 0: death animation, stop chasing player, Clean it from scene after 3 sec.
         if(currentHealthPoints <= 0f)
         {
-            //dead = true;
             m_Animator.SetTrigger("Die");
-            //m_Animator.Play()
             aIEnemyControl.SetTarget(transform);
             Destroy(gameObject, 3f);
         }

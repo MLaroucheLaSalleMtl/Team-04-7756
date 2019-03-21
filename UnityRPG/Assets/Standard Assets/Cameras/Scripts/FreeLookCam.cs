@@ -91,8 +91,15 @@ namespace UnityStandardAssets.Cameras
             var x = CrossPlatformInputManager.GetAxis("Mouse X");
             var y = CrossPlatformInputManager.GetAxis("Mouse Y");
 
+            var controllerX = Input.GetAxis("Right Stick Horizontal Turn");
+            var controllerY = -Input.GetAxis("Right Stick Vertical Turn");
+
+            //Debug.Log($"x: {x}, y: {y}");
+
             // Adjust the look angle by an amount proportional to the turn speed and horizontal input.
             m_LookAngle += x*m_TurnSpeed;
+            m_LookAngle += controllerX * m_TurnSpeed;
+
 
             // Rotate the rig (the root object) around Y axis only:
             m_TransformTargetRot = Quaternion.Euler(0f, m_LookAngle, 0f);
@@ -103,11 +110,15 @@ namespace UnityStandardAssets.Cameras
                 // on mobile, vertical input is directly mapped to tilt value, so it springs back automatically when the look input is released
                 // we have to test whether above or below zero because we want to auto-return to zero even if min and max are not symmetrical.
                 m_TiltAngle = y > 0 ? Mathf.Lerp(0, -m_TiltMin, y) : Mathf.Lerp(0, m_TiltMax, -y);
+                m_TiltAngle = controllerY > 0 ? Mathf.Lerp(0, -m_TiltMin, controllerY) : Mathf.Lerp(0, m_TiltMax, -controllerY);
+
             }
             else
             {
                 // on platforms with a mouse, we adjust the current angle based on Y mouse input and turn speed
                 m_TiltAngle -= y*m_TurnSpeed;
+                m_TiltAngle -= controllerY * m_TurnSpeed;
+
                 // and make sure the new value is within the tilt range
                 m_TiltAngle = Mathf.Clamp(m_TiltAngle, -m_TiltMin, m_TiltMax);
             }

@@ -1963,7 +1963,7 @@ GameObject:
   - component: {fileID: 2088676237}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2143,12 +2143,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1000
-  chaseRadius: 15
-  punchRadius: 1.5
-  swipRadius: 2
+  chaseRadius: 8.71
+  punchRadius: 1.99
+  swipRadius: 4.11
   jumpAttackRadius: 20
   damagePerShot: 40
   intervalBetweenShots: 0.5
+  currentHealthPoints: 1000
   attackSFX: {fileID: 0}
 --- !u!114 &2088676233
 MonoBehaviour:

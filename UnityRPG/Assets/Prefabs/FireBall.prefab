@@ -4692,7 +4692,6 @@ GameObject:
   - component: {fileID: 13500000}
   - component: {fileID: 5400000}
   - component: {fileID: 2227939580404937803}
-  - component: {fileID: 2398209397415796782}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Bullet
@@ -4760,20 +4759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   fireRate: 1
---- !u!114 &2398209397415796782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85ed11b812bee64fa069793af2cf43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 638388029518293403, guid: 0f6e7e703272f19408cd8212d34a18b0,
-    type: 3}
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0

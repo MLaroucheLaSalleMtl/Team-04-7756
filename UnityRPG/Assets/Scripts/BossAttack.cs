@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAttack : MonoBehaviour
 {
-    public float damageCaused;
+    private float damageCaused;
     GameObject player = null;
 
     public void SetDamage(float damage)
