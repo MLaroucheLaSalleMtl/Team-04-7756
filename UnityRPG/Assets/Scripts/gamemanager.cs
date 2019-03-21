@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class gamemanager : MonoBehaviour
 {
     private AsyncOperation async;
+    private bool isPaused = false;
+    [SerializeField] private ThirdPersonCharacter tp;
+
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject MaskPanel;
+    [SerializeField] private GameObject GameoverPanel;
 
     // Start is called before the first frame update
     void Start()
     {
+        tp = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonCharacter>();
         Time.timeScale = 1;
     }
 
@@ -26,6 +31,7 @@ public class gamemanager : MonoBehaviour
 
     public void ResumeGame()
     {
+        isPaused = false;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -39,6 +45,14 @@ public class gamemanager : MonoBehaviour
         async.allowSceneActivation = true;
     }
 
+    public void GameOver()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        GameoverPanel.SetActive(true);
+    }
+
     public void Exit()
     {
 #if UNITY_EDITOR
@@ -50,8 +64,17 @@ public class gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Cancel")){
+        if (Input.GetButton("Cancel") && isPaused == false){
             PauseGame();
+            isPaused = true;
+        }
+        //if (Input.GetButton("Cancel") && isPaused == true)
+        //{
+        //    ResumeGame();
+        //}
+        if(tp.gameover)
+        {
+            GameOver();
         }
     }
 }

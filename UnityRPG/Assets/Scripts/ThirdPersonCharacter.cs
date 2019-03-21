@@ -68,7 +68,8 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
 
     private float maxMana;
     private float mpRegenTimer;
-
+    public bool gameover;
+    private gamemanager gm;
 
     [SerializeField] private float regenIntervalMana = 0.5f;
     [SerializeField] float hpRegenRate = 1.0f;
@@ -77,6 +78,9 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
 
     void Start()
 	{
+        gameover = false;
+        gm = GetComponent<gamemanager>();
+
         mpRegenTimer = Time.deltaTime;
         hpRegenTimer = Time.deltaTime;
         stamRegenTimer = Time.deltaTime;
@@ -107,8 +111,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
 
     void Update()
     {
-        PlayerStillAlive();            
-
+        PlayerStillAlive();       
     }
 
     public void TakeDamage(float damage)
@@ -180,10 +183,11 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
             // TimeSpenttxt.text = "Time stayed alive : " + totalTime + " Sec";
             // currTimeText.text = "Time stayed alive : " + totalTime + " Sec";
 
-
             UpdateHealthBar();
             UpdateManaBar();
             UpdateStaminaBar();
+
+            gameover = true;
         }
     }
 
@@ -342,8 +346,7 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
 		}
 	}
 
-
-	void UpdateAnimator(Vector3 move)
+    void UpdateAnimator(Vector3 move)
 	{
 		// update the animator parameters
 		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
@@ -457,6 +460,14 @@ public class ThirdPersonCharacter : MonoBehaviour, IDamageable
     {
         canRoll = true;
         m_MoveSpeedMultiplier = 1.0f;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.tag == "Dead Zone")
+        {
+            gameover = true;
+        }
     }
 }
 
