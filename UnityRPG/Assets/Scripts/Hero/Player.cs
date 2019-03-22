@@ -6,10 +6,12 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealthPoints = 100f;
     [SerializeField] private float currentHealthPoints = 100f;
+
     [SerializeField] private float maxManaPoints = 100f;
-    private float currentManaPoints;
-    [SerializeField] private float staminaPoints = 100f;
-    private float currentStaminaPoints;
+    [SerializeField] private float currentManaPoints = 100f;
+
+    [SerializeField] private float maxStaminaPoints = 100f;
+    [SerializeField] private float currentStaminaPoints = 100f;
 
     private Animator m_Aminator;
     
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         get
         {
-            return currentManaPoints / maxHealthPoints;
+            return currentManaPoints / maxManaPoints;
         }
     }
 
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         get
         {
-            return currentStaminaPoints / maxHealthPoints;
+            return currentStaminaPoints / maxStaminaPoints;
         }
     }
 
@@ -41,8 +43,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         //Health = Mathf.Clamp(Health - damage, 0f, Health);
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-        //Debug.Log("Take Damage : " + damage);
-        //Debug.Log("Current HP : " + currentHealthPoints);
+    }
+
+    public void UseStamina(float stamina)
+    {
+        currentStaminaPoints = Mathf.Clamp(currentStaminaPoints - stamina, 0f, maxStaminaPoints);
     }
 
     //TODO Camera Locking to a target

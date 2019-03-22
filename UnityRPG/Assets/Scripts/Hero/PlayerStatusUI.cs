@@ -9,14 +9,14 @@ public class PlayerStatusUI : MonoBehaviour
 
     // Start is called before the first frame update
     //[SerializeField] private Image healthBar;
-    private Image healthBar;
-    private Image manaBar;
-    private Image staminaBar;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Image manaBar;
+    [SerializeField] private Image staminaBar;
 
     void Start()
     {
         player = GetComponent<Player>();
-        
+
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
         manaBar = GameObject.Find("ManaBar").GetComponent<Image>();
         staminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();

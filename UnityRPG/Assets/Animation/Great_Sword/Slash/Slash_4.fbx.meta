@@ -199,6 +199,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.32865167
+        functionName: OpenCol
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ce4fdb47cafeb2d42a223c17e9f98f60,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.55449635
+        functionName: CloseCol
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ce4fdb47cafeb2d42a223c17e9f98f60,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.5914634
         functionName: ComboCheck
         data: 

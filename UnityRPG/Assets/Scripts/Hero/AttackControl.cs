@@ -44,7 +44,7 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
-        //swordCol = GameObject.Find("SwordCol").GetComponent<GameObject>();
+        swordCol = GameObject.Find("SwordCol");
         swordCol.SetActive(false);
         hasSword = false;
 
@@ -68,6 +68,15 @@ public class AttackControl : MonoBehaviour
             m_Animator.SetBool("Attacking", true);
             m_Animator.SetTrigger("Attack1");
         }
+    }
+
+    private void OpenCol()
+    {
+        swordCol.SetActive(true);
+    }
+    private void CloseCol()
+    {
+        swordCol.SetActive(false);
     }
 
     private void SetZero()
@@ -131,22 +140,6 @@ public class AttackControl : MonoBehaviour
             canClick = true;
             numOfClicks = 0;
         }
-
-        //else
-        //{
-        //    m_Animator.SetBool("Attacking", false);
-        //    m_Animator.SetInteger("Animation", 0);
-        //    canClick = true;
-        //    numOfClicks = 0;
-        //}
-
-        //numOfClicks = 0;
-        //if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_3") && numOfClicks > 1)
-        //{
-        //    m_Animator.SetInteger("Animation", 5);
-        //    canClick = true;
-        //    numOfClicks = 0;
-        //}
     }
     // Update is called once per frame
     void Update()
@@ -156,111 +149,5 @@ public class AttackControl : MonoBehaviour
         {
             ComboStarter();
         }
-        //if (Input.GetButtonUp("Fire1"))
-        //{
-        //    isButtonDown = false;
-        //    m_Animator.SetBool("IsButtonDown", false);
-        //}
-        //if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && isButtonDown)
-        //{
-
-        //}
-        //if(currentAttack != null)
-        //{
-        //    AttackLogic();
-        //    Attacks();
-        //}
-
-            //particleTimer += Time.deltaTime;
-            //float attackTimer = Time.deltaTime;
-            //if (Input.GetButtonDown("Fire1") && canAttack)// && Maria.Stamina >= 15)// && hasSword == true)
-            //{
-            //    if(actionState != ActionState.Attack1 && actionState != ActionState.Attack2)
-            //    {
-            //        actionState = ActionState.Attack1;
-            //    }else if(actionState == ActionState.Attack1 && playerAnimation[currentAttack.name].time > 1.0f)
-            //    {
-            //        actionState = ActionState.Attack2;
-            //    }
-            //    m_Animator.SetBool("Attacking", true);
-            //    m_Animator.SetTrigger("Attack1");
-
-            //    particle.enabled = true;
-            //    particleTimer = 0.0f;
-            //    //Maria.Stamina -= 15;
-            //    canAttack = false;
-            //    Invoke("ResetAttack", 1.0f);
-
-            //}
-            //if (Input.GetButtonDown("Fire2"))
-            //{
-            //    m_Animator.SetTrigger("SpellAttack");
-            //}
-            //if (particleTimer > 1.0f)
-            //{
-            //    particle.enabled = false;
-            //    isEnemy = false;
-            //}
-
-
-            //particleTimer += Time.deltaTime;
-            //if (Input.GetButtonDown("Fire1") && canAttack && Maria.Stamina >= 15)
-            //{
-
-            //    m_Animator.SetTrigger("Attack");
-            //    particle.enabled = true;
-            //    particleTimer = 0.0f;            
-            //    Maria.Stamina -= 15;
-            //    canAttack = false;
-            //    Invoke("ResetAttack", 1.0f);
-            //}
-            //if (Input.GetButtonDown("Fire2"))
-            //{
-            //    m_Animator.SetTrigger("SpellAttack");
-            //}
-            //if(particleTimer > 1.0f)
-            //{
-            //    particle.enabled = false;
-            //    isEnemy = false;
-            //}
     }
-
-    //public void SpellAttack()
-    //{
-    //    projectile = Instantiate(projectile, transform.position, transform.rotation);
-    //    projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 100, ForceMode.Acceleration);
-    //}
-
-    //public void SwingSword()
-    //{
-    //    isEnemy = true;
-    //}
-
-    //public void SwordSound()
-    //{
-    //    Debug.Log("Swing Sword");
-    //}
-
-    //public void SwordAttack()
-    //{
-    //    if (isEnemy == true)
-    //    {
-    //        Debug.Log("Sword Attack");
-    //    }
-    //}
-
-    //public void ResetAttack()
-    //{
-    //    canAttack = true;
-    //}
-
-    //private void AttackStart()
-    //{
-    //    swordCol.SetActive(true);
-    //}
-
-    //private void AttackEnd()
-    //{
-    //    swordCol.SetActive(false);
-    //}
 }
