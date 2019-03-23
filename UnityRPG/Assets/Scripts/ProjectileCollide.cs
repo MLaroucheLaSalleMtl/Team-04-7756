@@ -27,6 +27,17 @@ public class ProjectileCollide : MonoBehaviour
     void Hit(Collision col)
     {
         Debug.Log("Called hit");
+        if (col.gameObject.tag == "Boss")
+        {
+        
+            col.gameObject.GetComponent<Boss>().currentHealthPoints -= 25;
+        }
+        if (col.gameObject.tag == "Enemy")
+        {
+           
+
+            col.gameObject.GetComponent<Enemy>().currentHealthPoints -= 35;
+        }
         // Make the projectile explode
         Explode(col.contacts[0].point);
 

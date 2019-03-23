@@ -10,12 +10,12 @@ public class ProjectileShoot : MonoBehaviour
 
     [SerializeField] private AudioClip fireSound;
 
-    [SerializeField] private ThirdPersonCharacter Maria;
+    [SerializeField] private Player Maria;
     public float speed = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
-        Maria = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonCharacter>();
+        Maria = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         if (projectileSpawnSpot == null)
         {
             projectileSpawnSpot = gameObject.transform;
@@ -30,9 +30,9 @@ public class ProjectileShoot : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (Maria.Mana >= 30)
+                if (Maria.Mana >= 35)
                 {
-                    Maria.Mana -= 30;
+                    Maria.Mana -= 35;
                     Fire();
                 }
             }
@@ -47,8 +47,7 @@ public class ProjectileShoot : MonoBehaviour
         //fireTimer = 0.0f;
 
         GameObject fireBall = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation);
-       // fireBall.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
-
+        // fireBall.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
 
         Debug.Log("Called Mana");
         // if (!infiniteAmmo)
@@ -61,6 +60,5 @@ public class ProjectileShoot : MonoBehaviour
         // Play the gunshot sound
         GetComponent<AudioSource>().PlayOneShot(fireSound);
 
-        Destroy(fireBall, 5.0f);
     }
 }

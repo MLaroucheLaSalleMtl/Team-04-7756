@@ -72,6 +72,14 @@ namespace UnityStandardAssets.Cameras
             {
                 FollowTarget(Time.deltaTime);
             }
+            if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
+            {
+                FindAndTargetOrb();
+            }
+            else//Back to player when released
+            {
+                FindAndTargetPlayer();
+            }
         }
 
 

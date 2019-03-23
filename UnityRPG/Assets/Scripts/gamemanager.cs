@@ -7,7 +7,7 @@ public class gamemanager : MonoBehaviour
 {
     private AsyncOperation async;
     private bool isPaused = false;
-    [SerializeField] private ThirdPersonCharacter tp;
+    [SerializeField] private Player tp;
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject MaskPanel;
     [SerializeField] private GameObject GameoverPanel;
@@ -15,7 +15,7 @@ public class gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tp = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonCharacter>();
+        tp = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Time.timeScale = 1;
     }
 

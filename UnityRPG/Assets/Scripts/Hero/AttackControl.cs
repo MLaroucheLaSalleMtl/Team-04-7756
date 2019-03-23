@@ -152,9 +152,12 @@ public class AttackControl : MonoBehaviour
     void Update()
     {
         //timer += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1"))
+        if (!Input.GetButton("Fire2"))
         {
-            ComboStarter();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                ComboStarter();
+            }
         }
         //if (Input.GetButtonUp("Fire1"))
         //{

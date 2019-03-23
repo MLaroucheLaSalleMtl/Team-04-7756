@@ -36,69 +36,14 @@ public class ThirdPersonCharacter : MonoBehaviour
 	float m_CapsuleHeight;
 	Vector3 m_CapsuleCenter;
 	CapsuleCollider m_Capsule;
-	//bool m_Crouching;
+    bool m_Crouching;
 
-    //Character Mechanics============================================================================
-
-    [SerializeField] private Image Manabar;
-    [SerializeField] private Image Healthbar;
-    [SerializeField] private Text Manatxt;
-    [SerializeField] private Image Staminabar;
-    [SerializeField] private Text Staminatxt;
-    [SerializeField] private Text Healthtxt;
-    //[SerializeField] private Text TimeSpenttxt;
-    //[SerializeField] public Text currTimeText;
-
-    private bool canRoll = true;
-
-    public float Health = 200.0f;
-    public float Mana = 200.0f;
-    public float Stamina = 100.0f;
-
-    private float maxStamina = 100.0f;
-    private float stamRegenTimer;
-        
-    public float MaxHealth;
-    public bool alive = true;
-    //private Vector3 initPos;
-    //private Transform myParent;
-
-    private float maxHp;
-    private float hpRegenTimer;
-
-    private float maxMana;
-    private float mpRegenTimer;
-    public bool gameover;
-    private gamemanager gm;
-
-    [SerializeField] private float regenIntervalMana = 0.5f;
-    [SerializeField] float hpRegenRate = 1.0f;
-
-    //=======================================================================================================
+    private bool canRoll;
 
     void Start()
 	{
-        gameover = false;
-        gm = GetComponent<gamemanager>();
-
-        mpRegenTimer = Time.deltaTime;
-        hpRegenTimer = Time.deltaTime;
-        stamRegenTimer = Time.deltaTime;
-            
-        maxHp = Health;
-        maxMana = Mana;
-
-        //if (currentMana >= 300.0f)
-        // {
-        //    currentMana = 300.0f;
-        //     maxMana = currentMana;
-        // }
-        // else
-        // {
-        //       maxMana = currentMana;
-        // }
-          
-
+        
+        
 		m_Animator = GetComponent<Animator>();
 		m_Rigidbody = GetComponent<Rigidbody>();
 		m_Capsule = GetComponent<CapsuleCollider>();
@@ -109,173 +54,7 @@ public class ThirdPersonCharacter : MonoBehaviour
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
 	}
 
-    void Update()
-    {
-<<<<<<< HEAD:UnityRPG/Assets/Scripts/ThirdPersonCharacter.cs
-        PlayerStillAlive();       
-=======
-        //PlayerStillAlive();            
-
->>>>>>> master:UnityRPG/Assets/Scripts/Hero/ThirdPersonCharacter.cs
-    }
-
-    //public void TakeDamage(float damage)
-    //{
-    //    Health = Mathf.Clamp(Health - damage, 0f, Health);
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.tag == "EnemyWeapon")
-    //    {
-    //        Health -= 10;
-    //    }
-    //}
-
-    //private void PlayerStillAlive()
-    //{
-    //    if (Health <= 0.0f && alive == true)
-    //    {
-    //        alive = false;
-    //        Die();
-    //        //Debug.Log("Wizard right now is = " + alive);
-    //    }
-    //    if (alive == true)
-    //    {
-    //        UpdateHealthBar();
-    //        UpdateManaBar();
-    //        UpdateStaminaBar();
-    //        mpRegenTimer += Time.deltaTime;
-    //        hpRegenTimer += Time.deltaTime;
-    //        stamRegenTimer += Time.deltaTime;
-
-    //        if (Mana < maxMana)
-    //        {
-    //            if (mpRegenTimer > regenIntervalMana)//Regen when mana less than max.
-    //            {
-    //                ManaRegen();
-    //            }
-    //        }
-
-    //        if (Health < maxHp)
-    //        {
-    //            if (hpRegenTimer > hpRegenRate)//Regen when hp less than max.
-    //            {
-    //                HealthRegen();
-    //            }
-    //        }
-    //        if (Stamina < maxStamina)
-    //        {
-    //            if (stamRegenTimer > 1.0f)//Regen stamina when less than max.
-    //            {
-    //                StaminaRegen();
-    //            }
-    //        }
-           
-    //    }
-    //}
-
-    //private void Die()
-    //{
-    //    if (alive == false)
-    //    {
-    //        Health = 0.0f;
-    //        Mana = 0.0f;
-    //        Stamina = 0.0f;
-
-    //        //finalscore = totalTime;
-    //        //totalTime = 0;
-    //        // TimeSpenttxt.text = "Time stayed alive : " + totalTime + " Sec";
-    //        // currTimeText.text = "Time stayed alive : " + totalTime + " Sec";
-
-<<<<<<< HEAD:UnityRPG/Assets/Scripts/ThirdPersonCharacter.cs
-            UpdateHealthBar();
-            UpdateManaBar();
-            UpdateStaminaBar();
-
-            gameover = true;
-        }
-    }
-=======
-
-    //        UpdateHealthBar();
-    //        UpdateManaBar();
-    //        UpdateStaminaBar();
-    //    }
-    //}
->>>>>>> master:UnityRPG/Assets/Scripts/Hero/ThirdPersonCharacter.cs
-
-    //private void UpdateHealthBar()
-    //{
-    //    float healthRatio = Health / maxHp;
-    //    Healthbar.rectTransform.localScale = new Vector3(healthRatio, 1, 1);
-    //    Healthtxt.text = (healthRatio * maxHp).ToString("0") + '/' + maxHp;
-
-           
-    //}
-
-    //private void UpdateManaBar()
-    //{
-           
-    //    float manaRatio = Mana / maxMana;
-    //    Manabar.rectTransform.localScale = new Vector3(manaRatio, 1, 1);
-    //    Manatxt.text = (manaRatio * maxMana).ToString("0") + "/ " + maxMana;
-
-           
-    //}
-
-    //private void UpdateStaminaBar()
-    //{
-    //    float stamRatio = Stamina / maxStamina;
-    //    Staminabar.rectTransform.localScale = new Vector3(stamRatio, 1, 1);
-    //    Staminatxt.text = (stamRatio * maxStamina).ToString("0") + '/' + maxStamina;
-
-
-    //}
-
-
-    //private void HealthRegen()
-    //{
-    //    hpRegenTimer = 0.0f;
-    //    if (Health < maxHp && alive)
-    //    {
-    //        Health = Health + (maxHp / 100);
-    //    }
-    //    if (Health >= maxHp)
-    //    {
-    //        Health = maxHp;
-    //    }
-
-    //}
-
-    //private void ManaRegen()
-    //{
-    //    mpRegenTimer = 0.0f;
-
-    //    if (Mana < maxMana)
-    //    {
-    //        Mana = Mana + (maxMana / 50);
-    //    }
-    //    if (Mana >= maxMana)
-    //    {
-    //        Mana = maxMana;
-    //    }
-
-    //}
-
-    //private void StaminaRegen()
-    //{
-    //    stamRegenTimer = 0.0f;
-    //    if (Stamina < maxStamina)
-    //    {               
-    //        Stamina = Stamina + 5;                           
-    //    }
-    //    if (Stamina >= maxStamina)
-    //    {
-    //        Stamina = maxStamina;
-    //    }
-
-    //}
+    
 
     public void Move(Vector3 move, bool jump)
 	{
@@ -285,7 +64,7 @@ public class ThirdPersonCharacter : MonoBehaviour
             m_MoveSpeedMultiplier = 2.25f;
             m_Animator.SetTrigger("Roll");
             Invoke("RollReset", 0.7f);
-            Stamina = Stamina - 25;
+           // Stamina = Stamina - 10;
                 
 
         //    //stamina = stamina - 20f;
@@ -322,48 +101,45 @@ public class ThirdPersonCharacter : MonoBehaviour
 	}
 
 
-    //void ScaleCapsuleForCrouching(bool crouch)
-    //{
-    //    if (m_IsGrounded && crouch)
-    //    {
-    //        //if (m_Crouching) return;
-    //        m_Capsule.height = m_Capsule.height / 2f;
-    //        m_Capsule.center = m_Capsule.center / 2f;
-    //        //m_Crouching = true;
-    //    }
-    //    else
-    //    {
-    //        Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-    //        float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-    //        if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-    //        {
-    //            m_Crouching = true;
-    //            return;
-    //        }
-    //        m_Capsule.height = m_CapsuleHeight;
-    //        m_Capsule.center = m_CapsuleCenter;
-    //        m_Crouching = false;
-    //    }
-    //}
+    void ScaleCapsuleForCrouching(bool crouch)
+    {
+        if (m_IsGrounded && crouch)
+        {
+            //if (m_Crouching) return;
+            m_Capsule.height = m_Capsule.height / 2f;
+            m_Capsule.center = m_Capsule.center / 2f;
+            //m_Crouching = true;
+        }
+        else
+        {
+            Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                m_Crouching = true;
+                return;
+            }
+            m_Capsule.height = m_CapsuleHeight;
+            m_Capsule.center = m_CapsuleCenter;
+            m_Crouching = false;
+        }
+    }
 
     void PreventStandingInLowHeadroom()
     {
         // prevent standing up in crouch-only zones
-        //if (!m_Crouching)
-        //{
-        Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-        float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-        //if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-        //{
-        //    m_Crouching = true;
-        //}
-        //}
+        if (!m_Crouching)
+        {
+            Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                m_Crouching = true;
+            }
+        }
     }
 
-<<<<<<< HEAD:UnityRPG/Assets/Scripts/ThirdPersonCharacter.cs
-=======
 
->>>>>>> master:UnityRPG/Assets/Scripts/Hero/ThirdPersonCharacter.cs
     void UpdateAnimator(Vector3 move)
 	{
 		// update the animator parameters
@@ -372,37 +148,35 @@ public class ThirdPersonCharacter : MonoBehaviour
 		//m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
 
-            
-
         if (!m_IsGrounded)
-		{
-			m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-		}
+        {
+            m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+        }
 
-		// calculate which leg is behind, so as to leave that leg trailing in the jump animation
-		// (This code is reliant on the specific run cycle offset in our animations,
-		// and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
-		float runCycle =
-			Mathf.Repeat(
-				m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
-		float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
-		if (m_IsGrounded)
-		{
-			m_Animator.SetFloat("JumpLeg", jumpLeg);
-		}
+        // calculate which leg is behind, so as to leave that leg trailing in the jump animation
+        // (This code is reliant on the specific run cycle offset in our animations,
+        // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
+        float runCycle =
+            Mathf.Repeat(
+                m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
+        float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
+        if (m_IsGrounded)
+        {
+            m_Animator.SetFloat("JumpLeg", jumpLeg);
+        }
 
         // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
         // which affects the movement speed because of the root motion.
         if (m_IsGrounded && move.magnitude > 0)
-		{
-			m_Animator.speed = m_AnimSpeedMultiplier;
-		}
-		else
-		{
-			// don't use that while airborne
-			m_Animator.speed = 1;
-		}
-	}
+        {
+            m_Animator.speed = m_AnimSpeedMultiplier;
+        }
+        else
+        {
+            // don't use that while airborne
+            m_Animator.speed = 1;
+        }
+    }
 
 
 	void HandleAirborneMovement()
@@ -480,12 +254,12 @@ public class ThirdPersonCharacter : MonoBehaviour
         m_MoveSpeedMultiplier = 1.0f;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.transform.tag == "Dead Zone")
-        {
-            gameover = true;
-        }
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.transform.tag == "Dead Zone")
+    //    {
+    //        gameover = true;
+    //    }
+    //}
 }
 

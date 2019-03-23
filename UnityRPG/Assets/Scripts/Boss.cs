@@ -92,11 +92,11 @@ public class Boss : MonoBehaviour
         // Chasing player
         if (distanceToPlayer <= chaseRadius && distanceToPlayer > swipRadius && isAttacking == false)
         {
-            aIEnemyControl.SetTarget(player.transform);
+            //aIEnemyControl.SetTarget(player.transform);
         }
         else
         {
-            aIEnemyControl.SetTarget(transform);
+           // aIEnemyControl.SetTarget(transform);
         }
 
         // Jump Attack

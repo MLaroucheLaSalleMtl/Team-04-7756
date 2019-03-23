@@ -6,7 +6,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float maxHealthPoints = 100f;
-    private float currentHealthPoints = 100f;
+    public float currentHealthPoints = 100f;
     [SerializeField] float chaseRadius = 5f;
     [SerializeField] float attackRadius = 2f;
     [SerializeField] GameObject projectileToUse;
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
             CancelInvoke();
         }
 
-        if (distanceToPlayer <= chaseRadius && distanceToPlayer > attackRadius && isDoingAttack == false)
+        if (distanceToPlayer <= chaseRadius && distanceToPlayer >= attackRadius && isDoingAttack == false)
         {
             aIEnemyControl.SetTarget(player.transform);
         }
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         if(currentHealthPoints <= 0f)
         {
             m_Animator.SetTrigger("Die");
-            aIEnemyControl.SetTarget(transform);
+            //aIEnemyControl.SetTarget(transform);
             projectileToUse.SetActive(false);
             Destroy(gameObject, 3f);
         }
