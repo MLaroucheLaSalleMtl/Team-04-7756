@@ -36,9 +36,6 @@ public class PlayerStatusUI : MonoBehaviour
 
 
         Maria = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-
-
     }
 
     // Update is called once per frame
@@ -47,7 +44,6 @@ public class PlayerStatusUI : MonoBehaviour
         UpdateHealthBar();
         UpdateManaBar();
         UpdateStaminaBar();
-
        // healthBar.fillAmount = player.healthAsPercentage;
        // manaBar.fillAmount = player.manaAsPercentage;
        // staminaBar.fillAmount = player.staminaAsPercentage;
@@ -59,18 +55,13 @@ public class PlayerStatusUI : MonoBehaviour
         float healthRatio = Maria.Health / Maria.maxHp;
         Healthbar.rectTransform.localScale = new Vector3(healthRatio, 1, 1);
         Healthtxt.text = (healthRatio * Maria.maxHp).ToString("0") + '/' + Maria.maxHp;
-
-
     }
 
     private void UpdateManaBar()
     {
-
         float manaRatio = Maria.Mana / Maria.maxMana;
         Manabar.rectTransform.localScale = new Vector3(manaRatio, 1, 1);
         Manatxt.text = (manaRatio * Maria.maxMana).ToString("0") + "/ " + Maria.maxMana;
-
-
     }
 
     private void UpdateStaminaBar()
@@ -78,7 +69,5 @@ public class PlayerStatusUI : MonoBehaviour
         float stamRatio = Maria.Stamina / Maria.maxStamina;
         Staminabar.rectTransform.localScale = new Vector3(stamRatio, 1, 1);
         Staminatxt.text = (stamRatio * Maria.maxStamina).ToString("0") + '/' + Maria.maxStamina;
-
-
     }
 }

@@ -7,11 +7,11 @@ public class Player : MonoBehaviour, IDamageable
     //[SerializeField] private float maxHealthPoints = 100f;
     //[SerializeField] private float currentHealthPoints = 100f;
     //[SerializeField] private float maxManaPoints = 100f;
-   // private float currentManaPoints;
-   // [SerializeField] private float staminaPoints = 100f;
-  //  private float currentStaminaPoints;
+    //private float currentManaPoints;
+    //[SerializeField] private float staminaPoints = 100f;
+    //private float currentStaminaPoints;
 
- 
+    
 
     public float Health = 200.0f;
     public float Mana = 200.0f;
@@ -49,7 +49,6 @@ public class Player : MonoBehaviour, IDamageable
     void Update()
     {
         PlayerStillAlive();
-
     }
 
     private void PlayerStillAlive()
@@ -91,7 +90,6 @@ public class Player : MonoBehaviour, IDamageable
                     StaminaRegen();
                 }
             }
-
         }
     }
 
@@ -104,7 +102,7 @@ public class Player : MonoBehaviour, IDamageable
             Health = 0.0f;
             Mana = 0.0f;
             Stamina = 0.0f;
-
+            gameover = true;
             //finalscore = totalTime;
             //totalTime = 0;
             // TimeSpenttxt.text = "Time stayed alive : " + totalTime + " Sec";
@@ -187,13 +185,20 @@ public class Player : MonoBehaviour, IDamageable
     }
     */
 
-
     public void TakeDamage(float damage)
     {
         Health = Mathf.Clamp(Health - damage, 0f, maxHp);
         //currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
         //Debug.Log("Take Damage : " + damage);
         Debug.Log("Current HP : " + Health);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Dead Zone"))
+        {
+            gameover = true;
+        }
     }
 
     //TODO Camera Locking to a target

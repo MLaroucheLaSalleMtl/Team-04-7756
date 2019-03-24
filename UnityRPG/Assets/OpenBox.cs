@@ -10,7 +10,7 @@ public class OpenBox : MonoBehaviour
     [SerializeField] private GameObject openedBox;
     [SerializeField] private GameObject closedBox;
     [SerializeField] private GameObject playerWithSword;
-    [SerializeField] private GameObject playerWithoutSword;
+    //[SerializeField] private GameObject playerWithoutSword;
     private bool canInteract;
     private bool canOpen;
     private bool canClose;
@@ -32,8 +32,8 @@ public class OpenBox : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         closedBox.SetActive(true);
         openedBox.SetActive(false);
-        playerWithSword.SetActive(false);
-        playerWithoutSword.SetActive(true);
+        //playerWithSword.SetActive(false);
+        //playerWithoutSword.SetActive(true);
     }
 
     // Update is called once per frame
@@ -53,9 +53,9 @@ public class OpenBox : MonoBehaviour
                     closedBox.SetActive(false);
                     openedBox.SetActive(true);
                     //attackControl.GetSword();
-                    playerWithoutSword.SetActive(false);
+                    //playerWithoutSword.SetActive(false);
                     playerWithSword.SetActive(true);
-                    playerWithSword.transform.position = playerWithoutSword.transform.position;
+                    //playerWithSword.transform.position = playerWithoutSword.transform.position;
                 }
             }
         }

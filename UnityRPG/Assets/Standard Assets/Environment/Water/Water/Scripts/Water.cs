@@ -7,6 +7,7 @@ namespace UnityStandardAssets.Water
     [ExecuteInEditMode] // Make water live-update even when not in play mode
     public class Water : MonoBehaviour
     {
+
         public enum WaterMode
         {
             Simple = 0,
@@ -398,6 +399,6 @@ namespace UnityStandardAssets.Water
             reflectionMat.m31 = 0F;
             reflectionMat.m32 = 0F;
             reflectionMat.m33 = 1F;
-        }
+        }        
     }
 }
