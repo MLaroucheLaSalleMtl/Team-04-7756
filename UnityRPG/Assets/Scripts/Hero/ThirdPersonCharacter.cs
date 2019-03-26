@@ -73,7 +73,9 @@ public class ThirdPersonCharacter : MonoBehaviour
     [SerializeField] private float regenIntervalMana = 0.5f;
     [SerializeField] float hpRegenRate = 1.0f;
 
-    Player player;
+    private Player player;
+    private float staminaCost = 25f;
+    //private float manaCost = 25f;
 
     //=======================================================================================================
 
@@ -105,6 +107,7 @@ public class ThirdPersonCharacter : MonoBehaviour
 
 		m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 
     void Update()
@@ -122,8 +125,7 @@ public class ThirdPersonCharacter : MonoBehaviour
             m_Animator.SetTrigger("Roll");
             Invoke("RollReset", 0.7f);
             //Stamina = Stamina - 25;
-            player.UseStamina(25f);
-                
+            player.UseStamina(staminaCost);
 
         //    //stamina = stamina - 20f;
         }

@@ -13,6 +13,29 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float maxStaminaPoints = 100f;
     [SerializeField] private float currentStaminaPoints = 100f;
 
+    private float timer;
+    private float manaMultiplier;
+    private float staminaMultiplier;
+
+    private void Start()
+    {
+        manaMultiplier = 1f;
+        staminaMultiplier = 5f;
+    }
+
+    private void Update()
+    {
+        timer = Time.deltaTime;
+        if (currentManaPoints < maxManaPoints)
+        {
+            currentManaPoints += timer;
+        }
+        if(currentStaminaPoints < maxStaminaPoints)
+        {
+            currentStaminaPoints += timer * staminaMultiplier;
+        }
+    }
+
     private Animator m_Aminator;
     
     public float healthAsPercentage
@@ -45,9 +68,15 @@ public class Player : MonoBehaviour, IDamageable
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
     }
 
+    public void UseMana(float mana)
+    {
+        currentManaPoints = Mathf.Clamp(currentManaPoints - mana, 0f, maxManaPoints);
+    }
+
     public void UseStamina(float stamina)
     {
         currentStaminaPoints = Mathf.Clamp(currentStaminaPoints - stamina, 0f, maxStaminaPoints);
+        currentManaPoints += timer * 2f;
     }
 
     //TODO Camera Locking to a target
