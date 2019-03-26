@@ -22,19 +22,16 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Floating();
+        //Fairy follow the player
         if(Vector3.Distance(player.transform.position, transform.position) > 0.1f)
         {
             transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
         }
-        transform.LookAt(player.transform.position);
-        //transform.Rotate(0, 0, 0);
-    }
 
-    //private void Floating()
-    //{
-    //    radian += perRadian;
-    //    float dy = Mathf.Sin(radian) * radius;
-    //    transform.position = oldPos + new Vector3(0f, dy, 0f);
-    //}
+        //Fairy only rotate on y axis
+        var lookPos = player.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime + speed);
+    }
 }
