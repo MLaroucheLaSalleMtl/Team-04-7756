@@ -48,14 +48,14 @@ namespace UnityStandardAssets.Cameras
             {
                 FollowTarget(Time.deltaTime);
             }
-            if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
-            {
-                FindAndTargetOrb();
-            }
-            else//Back to player when released
-            {
-                FindAndTargetPlayer();
-            }
+            //if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
+            //{
+            //    FindAndTargetOrb();
+            //}
+            //else//Back to player when released
+            //{
+            //    FindAndTargetPlayer();
+            //}
             
         }
 
@@ -114,13 +114,13 @@ namespace UnityStandardAssets.Cameras
             get { return m_Target; }
         }
 
-        public void FindAndTargetOrb()
-        {
-            var targetOrb = GameObject.FindGameObjectWithTag("MagicOrb");
-            if (targetOrb)
-            {
-                SetTarget(targetOrb.transform);
-            }
-        }
+        //public void FindAndTargetOrb()
+        //{
+        //    var targetOrb = GameObject.FindGameObjectWithTag("MagicOrb");
+        //    if (targetOrb)
+        //    {
+        //        SetTarget(targetOrb.transform);
+        //    }
+        //}
     }
 }

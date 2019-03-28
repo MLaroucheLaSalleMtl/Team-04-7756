@@ -18,7 +18,7 @@ public class AttackControl : MonoBehaviour
     [SerializeField] GameObject projectileSocket;
     [SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
 
-    [SerializeField] private GameObject crosshair;
+    
 
     private float particleTimer;
     AnimationClip currentAttack;
@@ -36,9 +36,6 @@ public class AttackControl : MonoBehaviour
     private bool isButtonDown;
 
     Ray ray;
-    RaycastHit hit;
-
-    Camera camera;
 
     // Start is called before the first frame update
     void Start()
@@ -59,11 +56,9 @@ public class AttackControl : MonoBehaviour
         countClicks = 0;
         canClick = true;
 
-        crosshair = GameObject.Find("CrosshiarCanvas");
-        crosshair.SetActive(false);
+        
 
         timer = Time.deltaTime;
-        camera = Camera.main;
     }
 
     private void ComboStarter()
@@ -166,28 +161,40 @@ public class AttackControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int layerMask = 1 << 9;
-        layerMask = ~layerMask;
+        //camera = Camera.main;
+
+        
 
         //timer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
             ComboStarter();
         }
-        if (Input.GetAxis("XBoxFire2") > 0.1f)
+        if (Input.GetAxis("XBoxFire2") > 0.1f || Input.GetButton("Fire2"))
         {
-            crosshair.SetActive(true);
+            canClick = false;
+            m_Animator.SetBool("isAiming", true);
         }
         else
         {
-            crosshair.SetActive(false);
+            m_Animator.SetBool("isAiming", false);
+            canClick = true;
         }
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+        //    crosshair.SetActive(true);
+        //    if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, layerMask))
+        //    {
+        //        //if()
+        //        print(hit.collider.name);
+        //        camera.transform.position = hit.collider.transform.position;
+        //    }
+        //}
+        //else
+        //{
+        //    crosshair.SetActive(false);
+        //}
 
         //ray = Camera.main.ScreenPointToRay();
-        if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit))//, layerMask))
-        {
-            //if()
-            print(hit.collider.name);
-        }
     }
 }

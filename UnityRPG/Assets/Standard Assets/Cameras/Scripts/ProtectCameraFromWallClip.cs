@@ -40,16 +40,16 @@ namespace UnityStandardAssets.Cameras
 
         private void LateUpdate()
         {
-            if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
-            {
-                m_CurrentDist = (m_OriginalDist / 4);
-                m_Cam.transform.position = new Vector3(m_Cam.transform.position.x, camera_Y * 6, m_Cam.transform.position.z);
-                //m_Cam.transform.position.y = m_Cam.transform.position.y - 5;
-            }
-            else
-            {
-                m_CurrentDist = m_OriginalDist;
-            }
+            //if (Input.GetButton("Fire2"))//When holding right click, go for magic orb.
+            //{
+            //    m_CurrentDist = (m_OriginalDist / 4);
+            //    m_Cam.transform.position = new Vector3(m_Cam.transform.position.x, camera_Y * 6, m_Cam.transform.position.z);
+            //    //m_Cam.transform.position.y = m_Cam.transform.position.y - 5;
+            //}
+            //else
+            //{
+            //    m_CurrentDist = m_OriginalDist;
+            //}
             // initially set the target distance
             float targetDist = m_OriginalDist;
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6ca0e63e9c606c49bf5b6d77ca1a366
+guid: 8129dcb40e878d24aac09404b97e1bac
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -137,7 +137,7 @@ ModelImporter:
     400128: Spine1
     400130: Spine2
     400132: sword_joint
-    7400000: Great Sword Strafe Left
+    7400000: Great Sword Strafe
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -168,10 +168,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Great Sword Strafe Left
+      name: Great Sword Strafe
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

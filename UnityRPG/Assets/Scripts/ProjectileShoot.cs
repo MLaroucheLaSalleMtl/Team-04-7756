@@ -26,17 +26,17 @@ public class ProjectileShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire2"))
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if (Maria.Mana >= 30)
-                {
-                    Maria.Mana -= 30;
-                    Fire();
-                }
-            }
-        }
+        //if (Input.GetButton("Fire2"))
+        //{
+        //    if (Input.GetButtonDown("Fire1"))
+        //    {
+        //        if (Maria.Mana >= 30)
+        //        {
+        //            Maria.Mana -= 30;
+        //            Fire();
+        //        }
+        //    }
+        //}
 
     }
 
