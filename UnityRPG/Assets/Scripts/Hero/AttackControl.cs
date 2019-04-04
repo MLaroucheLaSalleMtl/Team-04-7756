@@ -44,7 +44,7 @@ public class AttackControl : MonoBehaviour
         particle = this.GetComponentInChildren<ParticleSystem>().emission;
         particle.enabled = false;
         isEnemy = false;
-        //swordCol = GameObject.Find("SwordCol").GetComponent<GameObject>();
+        swordCol = GameObject.Find("SwordCol");
         swordCol.SetActive(false);
         hasSword = false;
 
@@ -257,13 +257,15 @@ public class AttackControl : MonoBehaviour
     //    canAttack = true;
     //}
 
-    //private void AttackStart()
-    //{
-    //    swordCol.SetActive(true);
-    //}
+    private void AttackStart()
+    {
+        swordCol.SetActive(true);
+        particle.enabled = true;
+    }
 
-    //private void AttackEnd()
-    //{
-    //    swordCol.SetActive(false);
-    //}
+    private void AttackEnd()
+    {
+        swordCol.SetActive(false);
+        particle.enabled = false;
+    }
 }

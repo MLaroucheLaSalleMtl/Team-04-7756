@@ -896,71 +896,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: maria_prop_j_j_ong
       objectReference: {fileID: 0}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
-      propertyPath: Staminabar
-      value: 
-      objectReference: {fileID: 2097578146}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: Manabar
       value: 
-      objectReference: {fileID: 182726901}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
+      objectReference: {fileID: 968929343}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: Healthbar
       value: 
-      objectReference: {fileID: 715654380}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
+      objectReference: {fileID: 1236186804}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: Manatxt
       value: 
       objectReference: {fileID: 584656453}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
-      propertyPath: Healthtxt
-      value: 
-      objectReference: {fileID: 1193140454}
-    - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
-      propertyPath: Staminatxt
-      value: 
-      objectReference: {fileID: 259396453}
-    - target: {fileID: 885706246, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1641930516}
-    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
-    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
-    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
-    - target: {fileID: 255208520, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: Staminabar
       value: 
@@ -970,73 +917,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 259396453}
     - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Manatxt
-      value: 
-      objectReference: {fileID: 584656453}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Healthbar
-      value: 
-      objectReference: {fileID: 1236186804}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Manabar
-      value: 
-      objectReference: {fileID: 968929343}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Maria
-      value: 
-      objectReference: {fileID: 512107862}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: Healthtxt
       value: 
       objectReference: {fileID: 1193140454}
-    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: MaxHealth
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869831, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_Name
-      value: TrailOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key1.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 474990899, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323974183, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323974182, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 474990895, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_Name
-      value: PlayerUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 474990895, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 323974185, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 474990897, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
 --- !u!1 &207014212
@@ -2077,18 +1960,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504187679}
   m_CullTransparentMesh: 0
---- !u!114 &512107862 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-    type: 3}
-  m_PrefabInstance: {fileID: 205626253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1edc1c652ffa64f9cb6138b842d5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &513477124
 GameObject:
   m_ObjectHideFlags: 0
