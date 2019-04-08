@@ -267,5 +267,19 @@ public class AttackControl : MonoBehaviour
     {
         swordCol.SetActive(false);
         particle.enabled = false;
+        Time.timeScale = 1.0f;
+    }
+
+    private void TimeScale()
+    {
+        if (Time.timeScale == 1.0f)
+        {
+            Time.timeScale = 0.5f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }
