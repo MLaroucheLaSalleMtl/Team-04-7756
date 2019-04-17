@@ -432,6 +432,23 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &55866052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55866049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 8c0cc0513b26af3458073b8ecef63a3a, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &55866055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &329174989
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2165,6 +2182,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7754737401086645308, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+        type: 3}
+      propertyPath: m_Name
+      value: maria_prop_j_j_ong
+      objectReference: {fileID: 0}
     - target: {fileID: 7754737401086645300, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2220,11 +2242,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7754737401086645308, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
-        type: 3}
-      propertyPath: m_Name
-      value: maria_prop_j_j_ong
+    - target: {fileID: 255208520, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 255208520, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_Name
+      value: BadRotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 1964758178}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Manabar
+      value: 
+      objectReference: {fileID: 1478921344}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Staminabar
+      value: 
+      objectReference: {fileID: 1271925974}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Staminatxt
+      value: 
+      objectReference: {fileID: 1384428212}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Healthtxt
+      value: 
+      objectReference: {fileID: 1945437561}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Manatxt
+      value: 
+      objectReference: {fileID: 511477035}
+    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Maria
+      value: 
+      objectReference: {fileID: 1707715351}
     - target: {fileID: 7754737401086645306, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
         type: 3}
       propertyPath: slider
@@ -2265,33 +2318,34 @@ PrefabInstance:
       propertyPath: Healthtxt
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
-    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
+    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: regenIntervalMana
+      value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
-    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
+    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Mana
+      value: 200
       objectReference: {fileID: 0}
-    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
+    - target: {fileID: 2035869831, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_Name
+      value: OrbTrail
       objectReference: {fileID: 0}
-    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
-        type: 3}
+    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.23529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.23529412
+      objectReference: {fileID: 0}
     - target: {fileID: 7754737400939467316, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -2397,70 +2451,33 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.990566
       objectReference: {fileID: 0}
-    - target: {fileID: 255208520, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255208520, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_Name
-      value: BadRotate
-      objectReference: {fileID: 0}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Healthbar
+    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 1874019404}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Manabar
+      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
+        type: 3}
+    - target: {fileID: 985611986, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 647570110}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Staminabar
+      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
+        type: 3}
+    - target: {fileID: 1214249373, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026192842, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 1321513210}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Staminatxt
-      value: 
-      objectReference: {fileID: 1384428212}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Healthtxt
-      value: 
-      objectReference: {fileID: 1945437561}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Manatxt
-      value: 
-      objectReference: {fileID: 511477035}
-    - target: {fileID: 1802813568, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Maria
-      value: 
-      objectReference: {fileID: 1707715351}
-    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: regenIntervalMana
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Mana
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869831, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: m_Name
-      value: OrbTrail
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime1
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035869834, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key1.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b,
+        type: 3}
     - target: {fileID: 474990899, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -4401,7 +4418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1106411476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7654,6 +7671,10 @@ PrefabInstance:
       propertyPath: punchRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2088676228, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
+      propertyPath: damagePerShot
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2088676233, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: target
       value: 
@@ -7925,5 +7946,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1029968768}
+    - target: {fileID: 7400241068661509686, guid: ab4909250fc6b874bb5c04703e21eba9,
+        type: 3}
+      propertyPath: Maria
+      value: 
+      objectReference: {fileID: 1707715351}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4909250fc6b874bb5c04703e21eba9, type: 3}

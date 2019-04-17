@@ -55,40 +55,46 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), rotateSpeed * Time.deltaTime);
-
-        if (distanceToPlayer <= attackRadius && !isAttacking)
+        if (currentHealthPoints > 0)
         {
-            m_Animator.SetBool("IsAttacking", true);
-            isAttacking = true;
-            InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
-            SpawnProjectile();
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), rotateSpeed * Time.deltaTime);
+
+            if (distanceToPlayer <= attackRadius && !isAttacking)
+            {
+                m_Animator.SetBool("IsAttacking", true);
+                isAttacking = true;
+                InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
+                SpawnProjectile();
+               
+            }
+
+            if (distanceToPlayer > attackRadius)
+            {
+                m_Animator.SetBool("IsAttacking", false);
+                isAttacking = false;
+                CancelInvoke();
+            }
+
+            if (distanceToPlayer <= chaseRadius && distanceToPlayer >= attackRadius && isDoingAttack == false)
+            {
+                aIEnemyControl.SetTarget(player.transform);
+            }
+            else
+            {
+                aIEnemyControl.SetTarget(transform);
+            }
         }
-
-        if(distanceToPlayer > attackRadius)
+        else //if enemy hp <= 0: death animation, stop chasing player, Clean it from scene after 3 sec.
         {
+            //Debug.Log("Enemy now DEAD");
             m_Animator.SetBool("IsAttacking", false);
             isAttacking = false;
-            CancelInvoke();
-        }
-
-        if (distanceToPlayer <= chaseRadius && distanceToPlayer >= attackRadius && isDoingAttack == false)
-        {
-            aIEnemyControl.SetTarget(player.transform);
-        }
-        else
-        {
-            aIEnemyControl.SetTarget(transform);
-        }
-
-        //if enemy hp <= 0: death animation, stop chasing player, Clean it from scene after 3 sec.
-        if(currentHealthPoints <= 0f)
-        {
             m_Animator.SetTrigger("Die");
-            //aIEnemyControl.SetTarget(transform);
-            projectileToUse.SetActive(false);
+            CancelInvoke();
+            aIEnemyControl.SetTarget(transform);
+            // this.projectileToUse.SetActive(false);
             Destroy(gameObject, 3f);
         }
     }
@@ -111,7 +117,7 @@ public class Enemy : MonoBehaviour
         if(other.tag == "Weapon")
         {
             attackSFX.Play();
-            currentHealthPoints -= 20f;
+            currentHealthPoints -= 25f;
             
         }
     }

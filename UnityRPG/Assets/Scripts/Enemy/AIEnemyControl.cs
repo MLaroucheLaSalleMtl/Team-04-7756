@@ -10,14 +10,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
         public ThirdPersonEnemy character { get; private set; } // the character we are controlling
         public Transform target;                                    // target to aim for
-
+        private Enemy enemy;
 
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ThirdPersonEnemy>();
-
+            enemy = GetComponent<Enemy>();
             agent.updateRotation = false;
             agent.updatePosition = true;
         }
@@ -37,7 +37,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void SetTarget(Transform target)
         {
-            this.target = target;
+            if (enemy.currentHealthPoints > 0)
+            {
+                this.target = target;
+            }
+            else
+            {
+                this.target = null;
+            }
         }
     }
 }
