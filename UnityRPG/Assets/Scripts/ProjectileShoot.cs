@@ -42,14 +42,14 @@ public class ProjectileShoot : MonoBehaviour
 
     void Fire()
     {
-        Debug.Log("Shot!!");
+        //Debug.Log("Shot!!");
         // Reset the fireTimer to 0 (for ROF)
         //fireTimer = 0.0f;
 
         GameObject fireBall = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation);
         // fireBall.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
 
-        Debug.Log("Called Mana");
+        //Debug.Log("Called Mana");
         // if (!infiniteAmmo)
         // {
         //   Debug.Log("Removed Mana");

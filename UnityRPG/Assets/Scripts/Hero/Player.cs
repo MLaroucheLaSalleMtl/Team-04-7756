@@ -19,12 +19,16 @@ public class Player : MonoBehaviour, IDamageable
 
     public float maxStamina = 100.0f;
     private float stamRegenTimer;
-
     
     public bool alive = true;
 
     public float maxHp;
     private float hpRegenTimer;
+
+    public int Damage = 25;
+    public int Level;
+    public long Points;
+    public float experience;
 
     public float maxMana;
     private float mpRegenTimer;
@@ -190,7 +194,7 @@ public class Player : MonoBehaviour, IDamageable
         Health = Mathf.Clamp(Health - damage, 0f, maxHp);
         //currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
         //Debug.Log("Take Damage : " + damage);
-        Debug.Log("Current HP : " + Health);
+        //Debug.Log("Current HP : " + Health);
     }
 
     private void OnTriggerEnter(Collider collision)

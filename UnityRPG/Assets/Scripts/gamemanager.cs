@@ -7,7 +7,9 @@ public class gamemanager : MonoBehaviour
 {
     private AsyncOperation async;
     private bool isPaused = false;
+    public bool isGainXP = false;
     [SerializeField] private Player tp;
+    [SerializeField] private Enemy en;
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject MaskPanel;
     [SerializeField] private GameObject GameoverPanel;
@@ -16,6 +18,7 @@ public class gamemanager : MonoBehaviour
     void Start()
     {
         tp = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        en = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
         Time.timeScale = 1;
     }
 
@@ -76,6 +79,21 @@ public class gamemanager : MonoBehaviour
         GameoverPanel.SetActive(true);
     }
 
+    //public void GainXP()
+    //{
+    //    tp.experience++;
+    //    isGainXP = false;
+    //}
+
+    //public void LevelUp()
+    //{
+    //    tp.maxHp += 25;
+    //    tp.maxMana += 20;
+    //    tp.Health = tp.maxHp;
+    //    tp.Damage += 10;
+    //    tp.Level++;
+    //}
+
     public void Exit()
     {
 #if UNITY_EDITOR
@@ -96,9 +114,20 @@ public class gamemanager : MonoBehaviour
         //{
         //    ResumeGame();
         //}
+        
         if(tp.gameover)
         {
             GameOver();
         }
+
+        //if (tp.experience != 0 && tp.experience % 10 == 0)
+        //{
+        //    LevelUp();
+        //}
+        //if (isGainXP)
+        //{
+        //    GainXP();
+        //}
+        //Debug.Log(tp.experience);
     }
 }

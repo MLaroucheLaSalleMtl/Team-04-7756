@@ -127,7 +127,7 @@ public class AttackControl : MonoBehaviour
         else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_4"))
         {
             //m_Animator.SetBool("Attacking", false);
-            Debug.Log("Attack 4");
+            //Debug.Log("Attack 4");
             m_Animator.SetInteger("Animation", 0);
             canClick = true;
             numOfClicks = 0;

@@ -13,13 +13,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject projectileSocket;
     [SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
 
-
     private bool isAttacking = false;
     private bool isDoingAttack = false;
+    public bool isDead = false;
+    public int Points = 100;
     [SerializeField] float damagePerShot = 9f;
     [SerializeField] float intervalBetweenShots = 0.5f;
 
-
+    [SerializeField] private gamemanager gm;
+    [SerializeField] private Player tp;
     AIEnemyControl aIEnemyControl = null;
     ThirdPersonEnemy thirdPersonEnemy = null;
     //ThirdPersonEnemy thirdPersonEnemy = null;
@@ -50,6 +52,8 @@ public class Enemy : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         attackSFX = this.GetComponent<AudioSource>();
         projectileToUse.SetActive(true);
+        tp = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gm = GameObject.FindGameObjectWithTag("gamemanager").GetComponent<gamemanager>();
     }
 
     // Update is called once per frame
@@ -96,6 +100,7 @@ public class Enemy : MonoBehaviour
             aIEnemyControl.SetTarget(transform);
             // this.projectileToUse.SetActive(false);
             Destroy(gameObject, 3f);
+            gm.isGainXP = true;
         }
     }
 
@@ -117,8 +122,7 @@ public class Enemy : MonoBehaviour
         if(other.tag == "Weapon")
         {
             attackSFX.Play();
-            currentHealthPoints -= 25f;
-            
+            currentHealthPoints -= tp.Damage;            
         }
     }
 

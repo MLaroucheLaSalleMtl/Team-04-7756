@@ -20,13 +20,13 @@ public class ProjectileCollide : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Collision enter has been triggered, now calling Hit");
+        //Debug.Log("Collision enter has been triggered, now calling Hit");
         Hit(col);
     }
 
     void Hit(Collision col)
     {
-        Debug.Log("Called hit");
+        //.Log("Called hit");
         if (col.gameObject.tag == "Boss")
         {
         
@@ -45,7 +45,7 @@ public class ProjectileCollide : MonoBehaviour
 
     void Explode(Vector3 position)
     {
-        Debug.Log("Called explode");
+        //Debug.Log("Called explode");
         // Instantiate the explosion
         if (explosion != null)
         {
