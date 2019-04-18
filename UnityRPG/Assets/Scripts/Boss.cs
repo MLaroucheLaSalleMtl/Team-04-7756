@@ -10,11 +10,13 @@ public class Boss : MonoBehaviour
     [SerializeField] private float punchRadius = 2f;
     [SerializeField] private float swipRadius = 4f;
     [SerializeField] private float jumpAttackRadius = 11f;
-    private GameObject BossCol;
+    private GameObject FistCol;
+    private GameObject ArmCol;
     //[SerializeField] GameObject projectileToUse;
     //[SerializeField] GameObject projectileSocket;
     //[SerializeField] Vector3 aimOffset = new Vector3(0f, 1f, 0f);
-
+    [SerializeField] GameObject fistComponent;
+    [SerializeField] GameObject armComponent;
 
     private bool isAttacking = false;
     [SerializeField] float damagePerShot = 50f;
@@ -26,6 +28,7 @@ public class Boss : MonoBehaviour
     ThirdPersonEnemy thirdPersonEnemy = null;
     //ThirdPersonEnemy thirdPersonEnemy = null;
     GameObject player = null;
+   // [SerializeField] GameObject TheBoss;
 
     Animator m_Animator;    //should be in the ThirdPersonEney.cs
     float rotateSpeed = 3f;
@@ -50,54 +53,121 @@ public class Boss : MonoBehaviour
         thirdPersonEnemy = GetComponent<ThirdPersonEnemy>();
         m_Animator = GetComponent<Animator>();
         attackSFX = GetComponent<AudioSource>();
-        BossCol = GameObject.FindGameObjectWithTag("EnemyWeapon");
+        FistCol = fistComponent;
+        ArmCol = armComponent;//GameObject.FindGameObjectWithTag("Fist");
         currentHealthPoints = maxHealthPoints;
     }
 
     // Update is called once per frame
     void Update()
     {
-        BossAttack fistComponent = BossCol.GetComponent<BossAttack>();
-        fistComponent.SetDamage(damagePerShot);
+        BossAttack fistDamage = fistComponent.GetComponent<BossAttack>();
+        fistDamage.SetDamage(damagePerShot / 4);
+        BossAttack ArmDamage = armComponent.GetComponent<BossAttack>();
+        ArmDamage.SetDamage(damagePerShot);
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), rotateSpeed * Time.deltaTime);
 
-        if (distanceToPlayer <= punchRadius)// && !isAttacking)
-        {
-            m_Animator.SetBool("IsSwip", false);
-            m_Animator.SetBool("IsPunch", true);
-            //isAttacking = true;
-            
-            //InvokeRepeating("SpawnProjectile", 0f, intervalBetweenShots);
-            //SpawnProjectile();
-        }
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant_Idle"))
+            {
+                if(distanceToPlayer <= punchRadius)
+                {
+                    m_Animator.SetInteger("Animation", 2);
+                }else if(distanceToPlayer > punchRadius && distanceToPlayer <= swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 1);
+                }else if(distanceToPlayer > swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 0);
+                }
 
-        if(distanceToPlayer > punchRadius && distanceToPlayer <= swipRadius)// && !isAttacking)
+            }
+            else if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Swip") && !m_Animator.IsInTransition(0))
+            {
+                m_Animator.SetBool("IsSwip", true);
+                m_Animator.SetBool("IsPunch", false);
+
+                if(distanceToPlayer <= punchRadius)
+                {
+                    m_Animator.SetInteger("Animation", 2);
+                }else if(distanceToPlayer > swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 0);
+                }else if (distanceToPlayer > punchRadius && distanceToPlayer <= swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 1);
+                }
+            }
+            else if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Punch") && !m_Animator.IsInTransition(0))
+            {
+                m_Animator.SetBool("IsSwip", false);
+                m_Animator.SetBool("IsPunch", true);
+
+                if (distanceToPlayer <= punchRadius)
+                {
+                    m_Animator.SetInteger("Animation", 2);
+                }
+                else if (distanceToPlayer > swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 0);
+                }else if(distanceToPlayer > punchRadius && distanceToPlayer <= swipRadius)
+                {
+                    m_Animator.SetInteger("Animation", 1);
+                }
+            }
+
+            /*
+                if (distanceToPlayer > punchRadius && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Punch") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant_Idle"))
+            {
+                m_Animator.SetBool("IsSwip", true);
+                m_Animator.SetBool("IsPunch", false);
+            }
+            else if(distanceToPlayer < punchRadius && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Punch") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant_Idle"))
+            {
+                m_Animator.SetBool("IsSwip", false);
+                m_Animator.SetBool("IsPunch", true);
+            }*/
+        /*
+        else if(distanceToPlayer > punchRadius && distanceToPlayer <= swipRadius)// && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Punch") && !isAttacking)//!m_Animator.IsInTransition(0) &&
         {
-            m_Animator.SetBool("IsPunch", false);
+
             m_Animator.SetBool("IsSwip", true);
+            m_Animator.SetBool("IsPunch", false);
+
+            if (distanceToPlayer <= punchRadius && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Swip")) //&& m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Swip"))
+            {
+                m_Animator.SetBool("IsSwip", false);
+                m_Animator.SetBool("IsPunch", true);
+            }
+            else if(distanceToPlayer >= punchRadius && !m_Animator.IsInTransition(0) && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Swip"))
+            {
+                m_Animator.SetBool("IsSwip", true);
+                m_Animator.SetBool("IsPunch", false);
+            }
+            
             //isAttacking = true;
             
-        }
-
-        if(distanceToPlayer > swipRadius)
+        }*/
+        /*
+        if(distanceToPlayer > swipRadius && !m_Animator.IsInTransition(0))
         {
             m_Animator.SetBool("IsSwip", false);
+            m_Animator.SetBool("IsPunch", false);
             //isAttacking = false;
             //CancelInvoke();
         }
-
+        */
         // Chasing player
-        if (distanceToPlayer <= chaseRadius && distanceToPlayer > swipRadius && isAttacking == false)
-        {
+        //if (distanceToPlayer <= chaseRadius && distanceToPlayer > swipRadius && isAttacking == false)
+       // {
             //aIEnemyControl.SetTarget(player.transform);
-        }
-        else
-        {
-           // aIEnemyControl.SetTarget(transform);
-        }
+      //  }
+       // else
+      //  {
+          // aIEnemyControl.SetTarget(transform);
+       // }
 
         // Jump Attack
         //if(distanceToPlayer > chaseRadius && distanceToPlayer <= jumpAttackRadius)
@@ -109,8 +179,11 @@ public class Boss : MonoBehaviour
         //if enemy hp <= 0: death animation, stop chasing player, Clean it from scene after 3 sec.
         if(currentHealthPoints <= 0f)
         {
+           
+            isAttacking = false;
             m_Animator.SetTrigger("Die");
-            aIEnemyControl.SetTarget(transform);
+            CancelInvoke();
+        
             Destroy(gameObject, 3f);
         }
     }
@@ -126,13 +199,46 @@ public class Boss : MonoBehaviour
 
     private void AttackStart()
     {
-        BossCol.SetActive(true);
+        if (m_Animator.GetBool("IsSwip") == true && !m_Animator.IsInTransition(0))
+        {
+            Debug.Log("Is Swip is found true");
+           // if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !m_Animator.IsInTransition(0))
+           // {
+                Debug.Log("We have entered the if statement for SWIP");
+                // && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant_Idle")
+                armComponent.SetActive(true);
+                fistComponent.SetActive(false);
+           // }
+            //}
+
+        }
+        else if ((m_Animator.GetBool("IsPunch") == true))
+        {
+            Debug.Log("Is Punch is found true");
+            // while (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Swip"))
+            //{
+            //if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !m_Animator.IsInTransition(0))
+            //{
+                Debug.Log("We have entered the if statement for PUNCH");
+                //  && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant_Idle")
+                fistComponent.SetActive(true);
+                armComponent.SetActive(false);
+          //  //} // }
+
+        }
+        else
+        {
+            fistComponent.SetActive(false);
+            armComponent.SetActive(false);
+        }
     }
     private void AttackEnd()
     {
-        BossCol.SetActive(false);
+        armComponent.SetActive(false);
+        fistComponent.SetActive(false);
     }
 
+    
     //void SpawnProjectile()
     //{
     //    GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.LookRotation(player.transform.position - transform.position));
