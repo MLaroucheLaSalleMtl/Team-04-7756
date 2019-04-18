@@ -16,6 +16,7 @@ TagManager:
   - Terrain
   - Boss
   - gamemanager
+  - Zombie
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,10 @@ public class ProjectileCollide : MonoBehaviour
 
             col.gameObject.GetComponent<Enemy>().currentHealthPoints -= 35;
         }
+        if(col.gameObject.tag == "Zombie")
+        {
+            col.gameObject.GetComponent<Zombie>().currentHealthPoints -= 35;
+        }
         // Make the projectile explode
         Explode(col.contacts[0].point);
 
