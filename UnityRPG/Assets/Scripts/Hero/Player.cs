@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     public float maxStamina = 100.0f;
     private float stamRegenTimer;
 
-    public float MaxHealth;
+    
     public bool alive = true;
 
     public float maxHp;

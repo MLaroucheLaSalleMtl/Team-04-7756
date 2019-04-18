@@ -81,6 +81,7 @@ public class AttackControl : MonoBehaviour
     public void ComboCheck()
     {
         canClick = false;
+
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_1") && numOfClicks == 1)
         {
             m_Animator.SetBool("Attacking", false);

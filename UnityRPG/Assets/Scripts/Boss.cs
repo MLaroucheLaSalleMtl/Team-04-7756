@@ -197,8 +197,10 @@ public class Boss : MonoBehaviour
         isAttacking = false;
     }
 
+    ///*
     private void AttackStart()
     {
+
         if (m_Animator.GetBool("IsSwip") == true && !m_Animator.IsInTransition(0))
         {
             Debug.Log("Is Swip is found true");
@@ -232,11 +234,14 @@ public class Boss : MonoBehaviour
             armComponent.SetActive(false);
         }
     }
+    //
+    
     private void AttackEnd()
     {
-        armComponent.SetActive(false);
+        Debug.Log("Attack has ended");
+       armComponent.SetActive(false);
         fistComponent.SetActive(false);
-    }
+    }//
 
     
     //void SpawnProjectile()

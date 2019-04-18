@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealthBar : MonoBehaviour
+public class ZombieHealth : MonoBehaviour
 {
     [SerializeField] Slider healthBar;
-    Enemy enemy = null;
+    Zombie enemy = null;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GetComponentInParent<Enemy>();
+        enemy = GetComponentInParent<Zombie>();
         healthBar.value = 1f;
         //healthBar.value = 1f;
     }

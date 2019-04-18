@@ -2098,6 +2098,14 @@ PrefabInstance:
       propertyPath: Mana
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: MaxHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
+      propertyPath: Health
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 2035869831, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: m_Name
       value: OrbTrail
@@ -2445,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32043db817c11d48a78581aca06d3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tp: {fileID: 0}
+  tp: {fileID: 1707715351}
   PausePanel: {fileID: 1271817699}
   MaskPanel: {fileID: 1106411475}
   GameoverPanel: {fileID: 1975521025}
@@ -6879,7 +6887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088676228, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: intervalBetweenShots
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2088676228, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: chaseRadius
@@ -6895,7 +6903,7 @@ PrefabInstance:
       objectReference: {fileID: 1560708532}
     - target: {fileID: 2088676228, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: maxHealthPoints
-      value: 30
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2088676228, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: punchRadius
@@ -6956,14 +6964,6 @@ PrefabInstance:
     - target: {fileID: 722686149, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: damageCaused
       value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088676236, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088676236, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
-      propertyPath: m_AutoBraking
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 959999567, guid: 19043ca888831aa45a45b7f2038aeb09, type: 3}
       propertyPath: m_IsActive
