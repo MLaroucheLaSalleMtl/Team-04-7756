@@ -28,7 +28,7 @@ public class ProjectileShoot : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("RB"))
             {
                 if (Maria.Mana >= 35)
                 {
