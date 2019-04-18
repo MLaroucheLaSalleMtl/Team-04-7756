@@ -1546,6 +1546,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552546506}
   m_CullTransparentMesh: 0
+--- !u!95 &559360253 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7754737401086645301, guid: 4a12a3193ca1cee4c9c0432898a90dd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 733186451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &567586176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,21 +2097,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: regenIntervalMana
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Mana
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: MaxHealth
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802813570, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
-      propertyPath: Health
-      value: 400
-      objectReference: {fileID: 0}
+      propertyPath: m_Anim
+      value: 
+      objectReference: {fileID: 559360253}
     - target: {fileID: 2035869831, guid: 4a12a3193ca1cee4c9c0432898a90dd4, type: 3}
       propertyPath: m_Name
       value: OrbTrail
@@ -2453,7 +2451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32043db817c11d48a78581aca06d3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGainXP: 0
   tp: {fileID: 1707715351}
+  en: {fileID: 0}
   PausePanel: {fileID: 1271817699}
   MaskPanel: {fileID: 1106411475}
   GameoverPanel: {fileID: 1975521025}

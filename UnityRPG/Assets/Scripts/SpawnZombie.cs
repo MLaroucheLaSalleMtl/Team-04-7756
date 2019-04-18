@@ -18,10 +18,12 @@ public class SpawnZombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 20)
+        if (GameObject.FindGameObjectsWithTag("Zombie").Length < 12)
         {
             SpawnEnemy();
         }
+
+
     }
 
     public void SpawnEnemy()

@@ -67,7 +67,7 @@ public class ThirdPersonCharacter : MonoBehaviour
            // Stamina = Stamina - 10;
                 
 
-        //    //stamina = stamina - 20f;
+        //    stamina = stamina - 20f;
         }
 
 

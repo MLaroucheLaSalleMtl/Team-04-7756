@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IDamageable
     //[SerializeField] private float staminaPoints = 100f;
     //private float currentStaminaPoints;
 
+    Animator m_Anim;
     
 
     public float Health = 200.0f;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
+        m_Anim = GetComponent<Animator>();
         mpRegenTimer = Time.deltaTime;
         hpRegenTimer = Time.deltaTime;
         stamRegenTimer = Time.deltaTime;
@@ -68,6 +70,21 @@ public class Player : MonoBehaviour, IDamageable
             //UpdateHealthBar();
             //UpdateManaBar();
             //UpdateStaminaBar();
+
+            if (Input.GetButtonDown("Roll") && m_Anim.GetCurrentAnimatorStateInfo(0).IsName("Roll") && !m_Anim.IsInTransition(0))// && Stamina > 15 && canRoll)
+            {
+
+            }else
+            {
+
+                if (Input.GetButtonDown("Roll"))
+                {
+                   // Stamina = Stamina - 10;
+                }
+                    
+                    
+            }
+
             mpRegenTimer += Time.deltaTime;
             hpRegenTimer += Time.deltaTime;
             stamRegenTimer += Time.deltaTime;
@@ -89,7 +106,7 @@ public class Player : MonoBehaviour, IDamageable
             }
             if (Stamina < maxStamina)
             {
-                if (stamRegenTimer > 1.0f)//Regen stamina when less than max.
+                if (stamRegenTimer > 5.0f)//Regen stamina when less than max.
                 {
                     StaminaRegen();
                 }

@@ -36,7 +36,7 @@ public class gamemanager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         PausePanel.SetActive(false);
         MaskPanel.SetActive(true);
     }
@@ -49,8 +49,8 @@ public class gamemanager : MonoBehaviour
 
     public void Restart()
     {
-        tp.Health = 200;
-        tp.Mana = 100f;
+        tp.Health = 500;
+        tp.Mana = 200f;
         tp.Stamina = 100f;
         PausePanel.SetActive(false);
         RestartGame();

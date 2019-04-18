@@ -18,7 +18,7 @@ public class SpawnArcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length < 14)
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length < 7)
         {
             SpawnEnemy();
         }
